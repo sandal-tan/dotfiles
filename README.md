@@ -9,7 +9,7 @@ monkey-patching it together as it is currently, and has always been for me.
 
 To bootstrap a new environment:
     
-    curl --silent https://git.io/JvO8d | bash
+    curl -L --silent https://git.io/JvO8d | bash
 
 ## `init.sh`
 

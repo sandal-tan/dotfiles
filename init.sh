@@ -5,5 +5,11 @@
 #
 # Bootstrap new environments
 
-echo "Nothing has been done yet!"
-exit 1
+
+OS="$(uname | tr '[:upper:]' '[:lower:]')"
+if [ "${OS}" == "darwin" ]; then
+    echo "Bootstraping Mac Environment"
+else
+    echo "OS ${OS} is unsupported"
+    exit 1
+fi
