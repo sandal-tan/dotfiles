@@ -9,8 +9,23 @@ monkey-patching it together as it is currently, and has always been for me.
 
 To bootstrap a new environment:
     
-    curl --silent https://raw.githubusercontent.com/sandal-tan/dotfiles/master/init.sh | bash
+    curl --silent https://git.io/JvO8d | bash
 
 ## `init.sh`
 
 Bootstrap script for new hosts. Begins new machine setup.
+
+## Notes
+
+I would like to look into the following:
+
+- [direnv](https://direnv.net/) for making sensitive environments
+- [revolver](https://github.com/molovo/revolver) for pretty printing
+- [ansi](https://github.com/fidian/ansi)
+- [lj](https://github.com/molovo/lumberjack)
+- [ondir](https://github.com/alecthomas/ondir)
+
+- Python based messageing tool to interface with xanthia, fzf for history, and login info notifications
+- TMUX and AWS hosting remote sessions
+
+## Development
