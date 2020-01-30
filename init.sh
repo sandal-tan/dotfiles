@@ -26,8 +26,9 @@ OS="$(uname | tr '[:upper:]' '[:lower:]')"
 if [ "${OS}" == "darwin" ]; then
     echo "Bootstraping Mac Environment"
     get_init_dotfiles
-    cd $TEMPDIR/dotfiles-master
     echo "Handing off control to mac initializer"
+    cd $TEMPDIR/dotfiles-master
+    ls
     sh mac/init.sh
     cd -
     del_init_dotfiles
