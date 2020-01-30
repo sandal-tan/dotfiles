@@ -4,7 +4,8 @@
 # date: 1/30/2020
 #
 # Bootstrap new environments
-
+set -e
+REPO_URL="https://github.com/sandal-tan/dotfiles/archive/master.zip"
 
 function get_init_dotfiles()
 {
@@ -12,7 +13,7 @@ function get_init_dotfiles()
     TEMPDIR=$tempdir
     echo $TEMPDIR
     cd $tempdir
-    curl -L --silent https://github.com/sandal-tan/dotfiles/archive/master.zip -o master.zip
+    curl -L --silent "${REPO_URL}" -o master.zip
     unzip master.zip
 }
 
