@@ -15,6 +15,10 @@ To bootstrap a new environment:
 
 Bootstrap script for new hosts. Begins new machine setup.
 
+Currently supported OSes
+
+- `macOS`
+
 ## Notes
 
 I would like to look into the following:
