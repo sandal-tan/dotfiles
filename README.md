@@ -23,7 +23,7 @@ By default, the installation command:
 
     curl --silent https://git.io/JvO8d | bash
 
-Will use master as the ref, however, the variable REF can be defined and the branch will be downloaded instead.
+Will use master as the ref, however, the variable `REF` can be defined and the branch will be downloaded instead.
 
 ## Notes
 
@@ -40,3 +40,18 @@ I would like to look into the following:
   and a visual way to see and run pytests for relevant pieces of code.
 
 ## Development
+
+A test server is provided to provide an ability to test the curl-based interactions without relying on external
+infrastructure.
+
+To start the server:
+
+    $ ./run_test_server.sh
+
+This will start a simple web-server to server the project directory. By default, the development server runs on port
+`8000`. In order for `init.sh` to be used in testing mode the environment in which it is running must have
+`BOOTSTRAP_MODE` set to `test`, which tells the script to download from the test server.
+
+Example:
+
+    $ curl --silent localhost:8000/init.sh | BOOTSTRAP_MODE=test bash

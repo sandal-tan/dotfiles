@@ -4,6 +4,7 @@
 # date: 1/30/2020
 #
 # Bootstrap new environments
+
 set -e
 
 MODE="${BOOTSTRAP_MODE:-live}"

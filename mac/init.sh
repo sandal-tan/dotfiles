@@ -24,3 +24,5 @@ if [ -e "${USER_DEVELOPMENT}" ]; then
 else
     echo "* User development environment '${USER_DEVELOPMENT}' does not exist."
 fi
+
+echo ""

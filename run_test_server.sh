@@ -22,6 +22,6 @@ python -m http.server "${PORT}" > /dev/null &
 revolver update "Forking"
 SERVER_PID=$!
 revolver update "$(ansi --green Running webserver at :${PORT})"
-fswatch -0 -e dotfiles.zip -ro ./ | build_archive
+fswatch -0 -ro ./ | build_archive
 kill -9 "${SERVER_PID}"
 revolver stop
