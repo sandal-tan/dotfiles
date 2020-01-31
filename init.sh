@@ -16,10 +16,9 @@ function get_init_dotfiles()
 {
     tempdir=$(mktemp -d)
     TEMPDIR=$tempdir
-    echo $TEMPDIR
     cd $tempdir
     curl -L --silent "${REPO_URL}" -o "${REF}.zip"
-    unzip "${REF}.zip"
+    unzip -qq "${REF}.zip"
 }
 
 function del_init_dotfiles()
@@ -27,13 +26,12 @@ function del_init_dotfiles()
     rm -rf $TEMPDIR
 }
 
-
 OS="$(uname | tr '[:upper:]' '[:lower:]')"
 if [ "${OS}" == "darwin" ]; then
     echo "Bootstraping Mac Environment"
     get_init_dotfiles
     echo "Handing off control to mac initializer"
-    cd "${TEMPDIR}/dotfiles-{REF}"
+    cd "${TEMPDIR}/dotfiles-${REF}"
     ls
     sh mac/init.sh
     cd -

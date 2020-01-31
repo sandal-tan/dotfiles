@@ -19,6 +19,12 @@ Currently supported OSes
 
 - `macOS`
 
+By default, the installation command:
+
+    curl --silent https://git.io/JvO8d | bash
+
+Will use master as the ref, however, the variable REF can be defined and the branch will be downloaded instead.
+
 ## Notes
 
 I would like to look into the following:
