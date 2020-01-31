@@ -6,14 +6,23 @@
 # Initialize a new environment in mac
 source ${BASH_SOURCE%/*}/../init_config.sh
 
-if [-e "${USER_BIN}" ]; then
-    echo "${USER_BIN} exists..."
+echo " ___ __ __   ________   ______       ______   ______      ";
+echo "/__//_//_/\ /_______/\ /_____/\     /_____/\ /_____/\     ";
+echo "\::\| \| \ \\::: _  \ \\:::__\/     \:::_ \ \\::::_\/_    ";
+echo " \:.      \ \\::(_)  \ \\:\ \  __    \:\ \ \ \\:\/___/\   ";
+echo "  \:.\-/\  \ \\:: __  \ \\:\ \/_/\    \:\ \ \ \\_::._\:\  ";
+echo "   \. \  \  \ \\:.\ \  \ \\:\_\ \ \    \:\_\ \ \ /____\:\ ";
+echo "    \__\/ \__\/ \__\/\__\/ \_____\/     \_____\/ \_____\/ ";
+echo "                                                          ";
+
+if [ -e "${USER_BIN}" ]; then
+    echo "* User bin `${USER_BIN}` exists."
 else
-    echo "${USER_BIN} does not exist"
+    echo "* User bin `${USER_BIN}` does not exist"
 fi
 
 if [ -e "${USER_DEVELOPMENT}" ]; then
-    echo "${USER_BIN} exists..."
+    echo "* User development environment `${USER_DEVELOPMENT}` exists."
 else
-    echo "${USER_BIN} does not exist"
+    echo "* User development environment `${USER_DEVELOPMENT}` does not exist."
 fi
