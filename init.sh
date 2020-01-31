@@ -6,7 +6,8 @@
 # Bootstrap new environments
 set -e
 
-REF="${master:-REF}"
+REF="${REF:-master}"
+
 echo "Initializing with ${REF}"
 
 REPO_URL="https://github.com/sandal-tan/dotfiles/archive/${REF}.zip"
