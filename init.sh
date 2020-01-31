@@ -6,18 +6,8 @@
 # Bootstrap new environments
 set -e
 
-REF="master"
-
-while getopts ":r" opt; do
-    case "${opt}" in
-        r ) # Set the git rev
-            REF="${OPTARG}"
-            ;;
-        \? ) echo "Usage: $ init.sh [-r]
-            ;;
-    esac
-done
-
+REF="${master:-REF}"
+echo "Initializing with ${REF}"
 
 REPO_URL="https://github.com/sandal-tan/dotfiles/archive/${REF}.zip"
 
