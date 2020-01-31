@@ -10,6 +10,7 @@ MODE="${BOOTSTRAP_MODE:-live}"
 
 REF="${REF:-master}"
 
+clear
 echo ""
 echo "    ____  ____  __________________    ___________";
 echo "   / __ \/ __ \/_  __/ ____/  _/ /   / ____/ ___/";
