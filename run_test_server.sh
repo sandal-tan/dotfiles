@@ -10,7 +10,8 @@ PORT=8000
 
 function build_archive ()
 {
-   xargs -0 -I {} git archive --prefix=dotfiles-master/ -o dotfiles.zip HEAD > /dev/null
+    echo "* Builing Archive"
+    xargs -0 -I {} git archive --prefix=dotfiles-master/ -o dotfiles.zip HEAD > /dev/null
 }
 
 revolver start "Launching test webserver"
@@ -19,6 +20,7 @@ python -m http.server "${PORT}" > /dev/null &
 revolver update "Forking"
 SERVER_PID=$!
 revolver update "$(ansi --green Running webserver at :${PORT})"
-fswatch -0 -ro ./ | build_archive
+build_archive
+fswatch -0 -e dotfiles.zip -ro ./ | build_archive
 kill -9 "${SERVER_PID}"
 revolver stop

@@ -9,6 +9,7 @@ set -e
 MODE="${BOOTSTRAP_MODE:-live}"
 
 REF="${REF:-master}"
+
 echo ""
 echo "    ____  ____  __________________    ___________";
 echo "   / __ \/ __ \/_  __/ ____/  _/ /   / ____/ ___/";
@@ -35,8 +36,8 @@ function get_init_dotfiles()
     tempdir=$(mktemp -d)
     TEMPDIR=$tempdir
     cd $tempdir
-    curl -L --silent "${REPO_URL}" -o "${REF}.zip"
-    unzip -qq "${REF}.zip"
+    curl -L --silent "${REPO_URL}" -o "dotfiles.zip"
+    unzip -qq "dotfiles.zip"
 }
 
 function del_init_dotfiles()
