@@ -5,7 +5,21 @@
 #
 # Bootstrap new environments
 set -e
-REPO_URL="https://github.com/sandal-tan/dotfiles/archive/master.zip"
+
+REF="master"
+
+while getopts ":r" opt; do
+    case "${opt}" in
+        r ) # Set the git rev
+            REF="${OPTARG}"
+            ;;
+        \? ) echo "Usage: $ init.sh [-r]
+            ;;
+    esac
+done
+
+
+REPO_URL="https://github.com/sandal-tan/dotfiles/archive/${REF}.zip"
 
 function get_init_dotfiles()
 {
@@ -13,8 +27,8 @@ function get_init_dotfiles()
     TEMPDIR=$tempdir
     echo $TEMPDIR
     cd $tempdir
-    curl -L --silent "${REPO_URL}" -o master.zip
-    unzip master.zip
+    curl -L --silent "${REPO_URL}" -o "${REF}.zip"
+    unzip "${REF}.zip"
 }
 
 function del_init_dotfiles()
@@ -28,7 +42,7 @@ if [ "${OS}" == "darwin" ]; then
     echo "Bootstraping Mac Environment"
     get_init_dotfiles
     echo "Handing off control to mac initializer"
-    cd $TEMPDIR/dotfiles-master
+    cd "${TEMPDIR}/dotfiles-{REF}"
     ls
     sh mac/init.sh
     cd -
