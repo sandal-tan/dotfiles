@@ -5,7 +5,8 @@
 #
 # Initialize a new environment in mac
 
-source ${BASH_SOURCE%/*}/../init_config.sh
+source "${BASH_SOURCE%/*}/../init_config.sh"
+source "${BASH_SOURCE%/*}../bash/functions/*.sh"
 
 echo "                         ____  _____";
 echo "   ____ ___  ____ ______/ __ \/ ___/";
@@ -13,18 +14,8 @@ echo "  / __ \`__ \/ __ \`/ ___/ / / /\__ \ ";
 echo " / / / / / / /_/ / /__/ /_/ /___/ / ";
 echo "/_/ /_/ /_/\__,_/\___/\____//____/  ";
 echo "                                    ";
-if [ -e "${USER_BIN}" ]; then
-    echo "* User bin '${USER_BIN}' exists."
-else
-    echo "* User bin '${USER_BIN}' does not exist"
-    mkdir "${USER_BIN}"
-fi
 
-if [ -e "${USER_DEVELOPMENT}" ]; then
-    echo "* User development environment '${USER_DEVELOPMENT}' exists."
-else
-    echo "* User development environment '${USER_DEVELOPMENT}' does not exist."
-    mkdir "${USER_DEVELOPMENT}"
-fi
+make_dir "${USER_BIN}"
+make_dir "${USER_DEVELOPMENT}"
 
 echo ""
