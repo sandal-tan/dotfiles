@@ -17,12 +17,14 @@ if [ -e "${USER_BIN}" ]; then
     echo "* User bin '${USER_BIN}' exists."
 else
     echo "* User bin '${USER_BIN}' does not exist"
+    mkdir "${USER_BIN}"
 fi
 
 if [ -e "${USER_DEVELOPMENT}" ]; then
     echo "* User development environment '${USER_DEVELOPMENT}' exists."
 else
     echo "* User development environment '${USER_DEVELOPMENT}' does not exist."
+    mkdir "${USER_DEVELOPMENT}"
 fi
 
 echo ""

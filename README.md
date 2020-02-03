@@ -23,7 +23,10 @@ By default, the installation command:
 
     curl --silent https://git.io/JvO8d | bash
 
-Will use master as the ref, however, the variable `REF` can be defined and the branch will be downloaded instead.
+will download the latest from  `master`, however, the variable `REF` can be defined and the branch will be downloaded
+instead, such as:
+
+    curl --silent https://git.io/JvO8d | REF=init bash
 
 ## Notes
 
@@ -34,7 +37,7 @@ I would like to look into the following:
 - [ansi](https://github.com/fidian/ansi)
 - [lj](https://github.com/molovo/lumberjack)
 - [ondir](https://github.com/alecthomas/ondir)
-- Python based messageing tool to interface with xanthia, fzf for history, and login info notifications
+- Python based messaging tool to interface with xanthia, fzf for history, and login info notifications
 - TMUX and AWS hosting remote sessions
 - TMUX-based IDE commands. A way to edit python, tie that editor to an instance of ipython that is tied to the code,
   and a visual way to see and run pytests for relevant pieces of code.
