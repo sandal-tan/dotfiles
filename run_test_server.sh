@@ -8,12 +8,14 @@
 PORT=8000
 
 
-function build_archive ()
+function build_archive()
 {
     ansi --yellow "* Building Archive"
-    stashName=`git stash create`;
-    xargs -0 -I {} git archive --prefix=dotfiles-master/ -o dotfiles.zip $stashName
-    git gc -- prune=now
+    cd ../
+    ln -s dotfiles dotfiles-master
+    xargs -0 -I {} zip -r dotfiles/dotfiles.zip dotfiles-master -x@dotfiles/.zipignore
+    rm dotfiles-master
+    cd dotfiles
 }
 
 revolver start "Launching test webserver"
@@ -22,6 +24,6 @@ python -m http.server "${PORT}" > /dev/null &
 revolver update "Forking"
 SERVER_PID=$!
 revolver update "$(ansi --green Running webserver at :${PORT})"
-fswatch -0 -ro ./ | build_archive
+fswatch -0r -e ".*" -i "\\.sh$" -e "dotfiles/*" . | build_archive
 kill -9 "${SERVER_PID}"
 revolver stop
