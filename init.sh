@@ -61,4 +61,3 @@ else
     echo "OS ${OS} is unsupported"
     exit 1
 fi
-

@@ -10,10 +10,9 @@ PORT=8000
 
 function build_archive()
 {
-    ansi --yellow "* Building Archive"
     cd ../
     ln -s dotfiles dotfiles-master
-    xargs -0 -I {} zip -r dotfiles/dotfiles.zip dotfiles-master -x@dotfiles/.zipignore
+    xargs -0 -I {} sh -c "echo $(ansi --yellow  '* Building Arhive'); zip -qr dotfiles/dotfiles.zip dotfiles-master -x@dotfiles/.zipignore"
     rm dotfiles-master
     cd dotfiles
 }
@@ -27,3 +26,4 @@ revolver update "$(ansi --green Running webserver at :${PORT})"
 fswatch -0r -e ".*" -i "\\.sh$" -e "dotfiles/*" . | build_archive
 kill -9 "${SERVER_PID}"
 revolver stop
+rm ../dotfiles-master
