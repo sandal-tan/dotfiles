@@ -10,6 +10,7 @@ source "${BASH_SOURCE%/*}/../init_config.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/os.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/install.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/git.sh"
+source "${BASH_SOURCE%/*}/../bash/functions/output.sh"
 
 git config --global user.name "Ian Baldwin"
 git config --global user.email "ian@iantbaldw.in"
