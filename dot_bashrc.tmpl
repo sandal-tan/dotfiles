@@ -1,18 +1,9 @@
 # vi: ft=bash
 
 # Environment Variables
-export HOMEBREW_BUNDLE_FILE=$HOME/.brewfile
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH=$HOME/.bin:$PYENV_ROOT/bin:$PATH
-
-{{- if eq .chezmoi.os "linux" }}
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info${INFOPATH+:$INFOPATH}";
-{{- end }}
+if [ -f ~/.environment ]; then
+    source ~/.environment
+fi
 
 # Aliases
 if [ -f ~/.bash_aliases ]; then
@@ -25,4 +16,22 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 _fish=$(which fish)
 export SHELL=$_fish
+
+{{- if eq .chezmoi.os "linux" }}
+function new_session() {
+    read -p "Enter a name for the session: " session_name
+    exec tmux new -s "${session_name}"
+}
+
+function tm() {
+  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+  if [ $1 ]; then
+    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  fi
+  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  exec tmux $change -t "$session" || new_session
+}
+
+tm
+{{- else }}
 exec $_fish
+{{- end }}
