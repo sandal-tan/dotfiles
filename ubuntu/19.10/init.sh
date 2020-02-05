@@ -17,7 +17,9 @@ echo "                                                          ";
 output "Attempting to Install 'build-essential'" --header
 if ! apt list --installed | grep build-essential &> /dev/null; then
     output "Installing 'build-essential'"
-    sudo apt install -y build-essential
+    sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+	libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+	xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 else
     output "'build-essential' already installed. Skipping." --warning
 fi
