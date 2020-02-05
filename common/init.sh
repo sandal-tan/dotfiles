@@ -77,6 +77,7 @@ if [ "$(pyenv global)" != "${PYTHON_VERSION}" ]; then
    output "Installing Python ${PYTHON_VERSION}" --start
    CONFIUGRE_OPTS="--with-openssl=$(brew --prefix openssl)" \
 	   CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include" \
+	   CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include" \
 	   LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix sqlite)/lib" \
 	   pyenv install "${PYTHON_VERSION}"
     output "Installing Python ${PYTHON_VERSION}" --end
