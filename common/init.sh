@@ -35,6 +35,27 @@ install_from_remote_binary git.io/ansi ansi
 # revolver for progress spinners
 install_from_git https://github.com/molovo/revolver revolver/revolver
 
+output "Attempting to Install 'chezmoi'" --header
+if [ ! -e "${USER_BIN}/chezmoi" ]; then
+    output "Downloading chezmoi" --start
+    curl -sfL https://git.io/chezmoi | sh &> /dev/null
+    output "Downloading chezmoi" --end
+    mv bin/chezmoi $USER_BIN/chezmoi
+else
+    output "'chezmoi' is already installed. Skipping." --warning
+fi
+
+
 # Clone the dotfiles
 output "Cloning dotfiles" --header
-clone "git@github.com:sandal-tan/dotfiles.git" "${USER_DEVELOPMENT}/dotfiles"
+if [ ! -e "${USER_DEVELOPMENT}/dotfiles" ]; then
+    clone "git@github.com:sandal-tan/dotfiles.git" "${USER_DEVELOPMENT}/dotfiles"
+    ln -s "${USER_DEVELOPMENT}/dotfiles" "${HOME}/.local/share/chezmoi"
+else
+    output "Dotfiles have already been cloned. Skipping." --warning
+fi
+
+# Apply dotfiles
+output "Apply dotfiles" --header
+${USER_BIN}/chezmoi init
+${USER_BIN}/chezmoi apply

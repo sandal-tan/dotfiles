@@ -8,3 +8,4 @@
 USER_BIN="${HOME}/.bin"
 USER_DEVELOPMENT="${HOME}/development"
 GITHUB_USERNAME="sandal-tan"
+CHEZMOI_HOME="${USER_DEVELOPMENT}/chezmoi"
