@@ -53,13 +53,14 @@ if [ ! -e ~/.local/share/chezmoi ]; then
     ${USER_BIN}/chezmoi apply
     output "Apply chezmoi" --end
     ln -s "${HOME}/.local/share/chezmoi" "${USER_DEVELOPMENT}/dotfiles"
+    source ~/.bashrc
 else
     output "Dotfiles have already been applied. Skipping." --warning
 fi
 
 output "Attempting to install 'brew bundle'" --header
-if ! $HOME/../linuxbrew/.linuxbrew/bin/brew tap | grep homebrew/bundle &> /dev/null; then
-	$HOME/../linuxbrew/.linuxbrew/bin/brew bundle install	
+if ! brew tap | grep homebrew/bundle &> /dev/null; then
+	brew bundle install	
 else
     output "'brew bundle' has already been installed" --warning
 fi
@@ -72,11 +73,11 @@ install_from_git https://github.com/molovo/revolver revolver/revolver
 
 # setup python environment
 output "Setting up python environment" --header
-if [ "$($HOME/../linuxserver/.linuxserver/bin/pyenv global)" != "${PYTHON_VERSION}" ]; then
+if [ "$(pyenv global)" != "${PYTHON_VERSION}" ]; then
     output "Installing Python ${PYTHON_VERSION}" --start
-    $HOME/../linuxserver/.linuxserver/bin/pyenv install "${PYTHON_VERSION}"
+    pyenv install "${PYTHON_VERSION}"
     output "Installing Python ${PYTHON_VERSION}" --end
-    $HOME/../linuxserver/.linuxserver/bin/pyenv global "${PYTHON_VERSION}"
+    pyenv global "${PYTHON_VERSION}"
 else
     output "Python environment is already setup. Skipping." --warning
 fi
