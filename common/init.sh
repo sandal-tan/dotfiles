@@ -73,15 +73,15 @@ install_from_git https://github.com/molovo/revolver revolver/revolver
 
 # setup python environment
 output "Setting up python environment" --header
-if [ "$(pyenv global)" != "${PYTHON_VERSION}" ]; then
-   output "Installing Python ${PYTHON_VERSION}" --start
-   #CFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include -I$(brew --prefix openssl)/include/openssl -I$(brew --prefix bzip2)/include"\
-	   #CPPFLAGS="-I$(brew --prefix zlib)/include -I$(brew --prefix sqlite)/include -I$(brew --prefix openssl)/include/openssl -I$(brew --prefix bzip2)/include" \
-	   #LDFLAGS="-L$(brew --prefix zlib)/lib -L$(brew --prefix sqlite)/lib -L$(brew --prefix openssl)/lib -L$(brew --prefix bzip2)/lib" \
+if [ ! -e "${HOME}/.pyenv/versions/${PYTHON_VERSION}" ]; then
+    output "Installing Python ${PYTHON_VERSION}" --start
     pyenv install "${PYTHON_VERSION}"
     output "Installing Python ${PYTHON_VERSION}" --end
-    pyenv global "${PYTHON_VERSION}"
 else
     output "Python environment is already setup. Skipping." --warning
+fi
+
+if [ "$(pyenv global)" != "${PYTHON_VERSION}" ]; then
+    pyenv global "${PYTHON_VERSION}"
 fi
 
