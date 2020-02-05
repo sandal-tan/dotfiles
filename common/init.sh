@@ -33,12 +33,6 @@ fi
 make_dir "${USER_BIN}"
 make_dir "${USER_DEVELOPMENT}"
 
-# ansi for printing colors
-install_from_remote_binary git.io/ansi ansi
-
-# revolver for progress spinners
-install_from_git https://github.com/molovo/revolver revolver/revolver
-
 output "Attempting to Install 'chezmoi'" --header
 if [ ! -e "${USER_BIN}/chezmoi" ]; then
     output "Downloading chezmoi" --start
@@ -62,3 +56,10 @@ if [ ! -e ~/.local/share/chezmoi ]; then
 else
     output "Dotfiles have already been applied. Skipping." --warning
 fi
+
+# ansi for printing colors
+install_from_remote_binary git.io/ansi ansi
+
+# revolver for progress spinners
+install_from_git https://github.com/molovo/revolver revolver/revolver
+
