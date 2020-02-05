@@ -1,0 +1,14 @@
+ipython
+pandas
+numpy
+scikit-learn
+pipenv
+neovim
+pynvim
+pyotp
+jinja2
+{{- if eq .chezmoi.os darwin }}
+pywal
+colorz
+{{- end }}
+
