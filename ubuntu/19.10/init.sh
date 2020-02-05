@@ -14,7 +14,15 @@ echo "/ /_/ / /_/ / /_/ / / / / /_/ /_/ /   / /\__, / / / /_/ / ";
 echo "\____/_.___/\__,_/_/ /_/\__/\__,_/   /_//____(_)_/\____/  ";
 echo "                                                          ";
 
-output "Attempting to Install Homebrew"
+output "Attempting to Install 'build-essential'" --header
+if ! apt list --installed | grep build-essential &> /dev/null; then
+    output "Installing 'build-essential'"
+    sudo apt install -y build-essential
+else
+    output "'build-essential' already installed. Skipping." --warning
+fi
+
+output "Attempting to Install Homebrew" --header
 if  [ ! -e "${HOME}/../linuxbrew/.linuxbrew" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 else
