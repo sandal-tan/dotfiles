@@ -1,9 +1,7 @@
 README.md
 bash/*
 common/*
-init.sh
 dotfiles*
-init_config.sh
 mac/*
 ubuntu/*
-run_test_server.sh
+*.sh
