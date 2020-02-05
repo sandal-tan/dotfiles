@@ -58,8 +58,8 @@ else
 fi
 
 output "Attempting to install 'brew bundle'" --header
-if ! $HOME/../linuxbrew/bin/brew tap | grep homebrew/bundle &> /dev/null; then
-	$HOME/../linuxbrew/bin/brew bundle install	
+if ! $HOME/../linuxbrew/.linuxbrew/bin/brew tap | grep homebrew/bundle &> /dev/null; then
+	$HOME/../linuxbrew/.linuxbrew/bin/brew bundle install	
 else
     output "'brew bundle' has already been installed" --warning
 fi
