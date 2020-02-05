@@ -5,11 +5,7 @@
 #
 # Initialize a new environment in mac
 
-source "${BASH_SOURCE%/*}/../init_config.sh"
-source "${BASH_SOURCE%/*}/../bash/functions/os.sh"
-source "${BASH_SOURCE%/*}/../bash/functions/install.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/output.sh"
-source "${BASH_SOURCE%/*}/../bash/functions/git.sh"
 
 echo "                         ____  _____";
 echo "   ____ ___  ____ ______/ __ \/ ___/";
@@ -18,8 +14,6 @@ echo " / / / / / / /_/ / /__/ /_/ /___/ / ";
 echo "/_/ /_/ /_/\__,_/\___/\____//____/  ";
 echo "                                    ";
 
-make_dir "${USER_BIN}"
-make_dir "${USER_DEVELOPMENT}"
 
 # Prompt user to install command line utilities
 output "Installing commmand line developer tools" --header
@@ -36,13 +30,6 @@ else
     output "Command line developer tools are already installed, Skipping." --warning
 fi
 
-# ansi for printing colors
-install_from_remote_binary git.io/ansi ansi
-
-# revolver for progress spinners
-install_from_git https://github.com/molovo/revolver revolver/revolver
-
-# Clone the dotfiles
-clone "git@github.com:sandal-tan/dotfiles.git" "${USER_DEVELOPMENT}/dotfiles"
-
 echo ""
+
+bash "${BASH_SOURCE%/*}/../common/init.sh"

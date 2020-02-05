@@ -49,7 +49,7 @@ function install_from_git()
     fi
 
     # This will probably need another option to handle clonning to a different name
-    clone "${repo}" "${binary_name}" "${USER_DEVELOPMENT}/${binary_name}"
-    chmod 755 "${binary_path}"
+    clone "${repo}" "${USER_DEVELOPMENT}/${binary_name}"
+    chmod 755 "${USER_DEVELOPMENT}/${binary_path}"
     ln -s "${USER_DEVELOPMENT}/${binary_path}" "${USER_BIN}/${binary_name}"
 }

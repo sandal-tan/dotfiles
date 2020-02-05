@@ -59,7 +59,6 @@ function output()
 {
     message="${1}"
     shift
-    options=$(getopt "$@")
     exit_when_done=0
     add_newline=0
     while true; do

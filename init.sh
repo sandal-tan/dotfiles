@@ -28,7 +28,7 @@ echo "* Initializing with: ${REF}"
 if [ "${MODE}" == "live" ]; then
     REPO_URL="https://github.com/sandal-tan/dotfiles/archive/${REF}.zip"
 elif [ "${MODE}" == "test" ]; then
-    REPO_URL="http://192.168.86.21:8000/dotfiles.zip"
+    REPO_URL="http://192.168.86.250:8000/dotfiles.zip"
 fi
 
 echo "* Initializing from: ${REPO_URL}"
@@ -39,7 +39,11 @@ function get_init_dotfiles()
     TEMPDIR=$tempdir
     cd $tempdir
     curl -L --silent "${REPO_URL}" -o "dotfiles.zip"
-    unzip -qq "dotfiles.zip"
+    if [ "${OS}" == "linux" ]; then
+        python3 -m zipfile -e dotfiles.zip .
+    elif [ "${OS}" == "darwin" ]; then
+        unzip -qq "dotfiles.zip"
+    fi
 }
 
 function del_init_dotfiles()
@@ -54,9 +58,37 @@ if [ "${OS}" == "darwin" ]; then
     echo "* Handing Off Control to Mac Initializer"
     echo""
     cd "${TEMPDIR}/dotfiles-${REF}"
-    sh mac/init.sh
+    bash mac/init.sh
     cd - > /dev/null
     del_init_dotfiles
+elif [ -f "/etc/os-release" ]; then
+    source /etc/os-release
+    distribution="${ID}"
+    version="${VERSION_ID}"
+    case $distribution in
+        ubuntu)
+            echo "* Bootstraping Ubuntu Environment"
+            case $version in
+                19.10)
+                    get_init_dotfiles
+                    echo "* Handing Off Control to Ubuntu 19.10 Initializer"
+                    echo ""
+                    cd "${TEMPDIR}/dotfiles-${REF}"
+                    bash ubuntu/19.10/init.sh
+                    cd - > /dev/null
+                    del_init_dotfiles
+                    ;;
+                *)
+                    echo "Unknown Ubuntu version: ${version}"
+                    exit 1
+                    ;;
+            esac
+            ;;
+        *)
+            echo "Unknown linux distribution: ${distribution}"
+            exit 1
+            ;;
+    esac
 else
     echo "OS ${OS} is unsupported"
     exit 1
