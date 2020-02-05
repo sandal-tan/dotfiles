@@ -73,7 +73,9 @@ install_from_git https://github.com/molovo/revolver revolver/revolver
 # setup python environment
 output "Setting up python environment" --header
 if [ "$($HOME/../linuxserver/.linuxserver/bin/pyenv global)" != "${PYTHON_VERSION}" ]; then
+    output "Installing Python ${PYTHON_VERSION}" --start
     $HOME/../linuxserver/.linuxserver/bin/pyenv install "${PYTHON_VERSION}"
+    output "Installing Python ${PYTHON_VERSION}" --end
     $HOME/../linuxserver/.linuxserver/bin/pyenv global "${PYTHON_VERSION}"
 else
     output "Python environment is already setup. Skipping." --warning
