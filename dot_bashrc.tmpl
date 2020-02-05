@@ -17,3 +17,8 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info${INFOPATH+:$INFOPATH}";
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
+
+# Hand over to fish
+_fish=$(which fish)
+export SHELL=$_fish
+exec $_fish

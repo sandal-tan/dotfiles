@@ -1,3 +1,4 @@
 .fetchtime
 dotfiles.zip
 dotfiles-*/
+.nvimlog
