@@ -1,5 +1,8 @@
 # vi: ft=bash
+
+# Environment Variables
 export PATH=$HOME/.bin:$PATH
+export HOMEBREW_BUNDLE_FILE=$HOME/.brewfile
 
 {{- if eq .chezmoi.os "linux" }}
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
