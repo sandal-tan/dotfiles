@@ -11,6 +11,9 @@ source "${BASH_SOURCE%/*}/../bash/functions/os.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/install.sh"
 source "${BASH_SOURCE%/*}/../bash/functions/git.sh"
 
+git config --global user.name "Ian Baldwin"
+git config --global user.email "ian@iantbaldw.in"
+
 if [ ! -e "$HOME/.ssh/id_rsa" ]; then
     output "No default SSH key found. Creating now" --start
     ssh-keygen -f ~/.ssh/id_rsa -N "" -q
@@ -45,17 +48,16 @@ else
     output "'chezmoi' is already installed. Skipping." --warning
 fi
 
-
-# Clone the dotfiles
-output "Cloning dotfiles" --header
-if [ ! -e "${USER_DEVELOPMENT}/dotfiles" ]; then
-    clone "git@github.com:sandal-tan/dotfiles.git" "${USER_DEVELOPMENT}/dotfiles"
-    ln -s "${USER_DEVELOPMENT}/dotfiles" "${HOME}/.local/share/chezmoi"
-else
-    output "Dotfiles have already been cloned. Skipping." --warning
-fi
-
 # Apply dotfiles
 output "Apply dotfiles" --header
-${USER_BIN}/chezmoi init
-${USER_BIN}/chezmoi apply
+if [ ! -e ~/.local/share/chezmoi ]; then
+    output "Initializing chezmoi" --start
+    ${USER_BIN}/chezmoi init "${REPO_URL}"
+    output "Initializing chezmoi" --end
+    output "Apply chezmoi" --start
+    ${USER_BIN}/chezmoi apply
+    output "Apply chezmoi" --end
+    ln -s "${HOME}/.local/share/chezmoi" "${USER_DEVELOPMENT}/dotfiles"
+else
+    output "Dotfiles have already been applied. Skipping." --warning
+fi
