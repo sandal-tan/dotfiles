@@ -1,0 +1,15 @@
+# General
+abbr vim 'nvim'
+abbr dot 'cd $USER_DEVELOPMENT/dotfiles'
+
+# Git
+abbr gs 'git status'
+abbr ga 'git add'
+abbr gc "git commit -am '"
+abbr gph 'git push'
+abbr gpl 'git pull'
+abbr gb 'git branch'
+abbr gco 'git checkout'
+{{- if eq .chezmoi.os "darwwin" }}
+abbr gcl 'git clone (pbpaste)'
+{{- end }}
