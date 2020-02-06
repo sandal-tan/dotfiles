@@ -1,0 +1,12 @@
+echo "                                                                     ";
+echo "${GREEN#  }       ___      ___          /--/\         ${fieldlist[1]}";
+echo "${GREEN#  }      /__/\    /__/\        /  /::\        ${fieldlist[2]}";
+echo "${YELLOW# }      \__\:\   \  \:\      /  /:/\:\       ${fieldlist[4]}";
+echo "${YELLOW# }      /  /::\   \__\:\    /  /::\ \:\      ${fieldlist[5]}";
+echo "${RED#    }   __/  /:/\/   /  /::\  /__/:/\:\_\:|     ${fieldlist[6]}";
+echo "${PURPLE# }  /__/\/:/~~   /  /:/\:\ \  \:\ \:\/:/     ${fieldlist[7]}";
+echo "${PURPLE# }  \  \::/     /  /:/__\/  \  \:\_\::/      ${fieldlist[8]}";
+echo "${BLUE#   }   \  \:\    /__/:/        \  \:\/:/       ${fieldlist[9]}";
+echo "${BLUE#   }    \__\/    \__\/          \__\__/        ${fieldlist[10]}";
+echo "${normal}                                                             ";
+
