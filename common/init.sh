@@ -89,9 +89,9 @@ else
     output "Python version is already set. Skipping." --warning
 fi
 
-output "Attempting to install tpm" --header
+output "Attempting to install 'tpm'" --header
 if [ ! -e $HOME/.tmux/plugins/tpm ]; then
-    clone "https://github.com/tmux-plugins/tpm" "~/.tmux/plugins/tpm"
+    clone "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm"
 else
     output "'tpm' is already installed. Skipping." --warningc
 fi
