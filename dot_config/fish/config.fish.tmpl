@@ -1,0 +1,14 @@
+# vi: ft=fish
+
+if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
+
+fundle plugin 'fishpkg/fish-humanize-duration'
+fundle plugin 'fishpkg/fish-last-job-id'
+fundle plugin 'edc/bass'
+fundle plugin 'rafaelrinaldi/pure'
+
+fundle init
+
+if not test -e ~/.config/fish/fundle; fundle install; end
+
+bass source $HOME/.environment

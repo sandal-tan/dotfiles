@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd $(dirname $(fd -L --hidden ".git\$" ${USER_DEVELOPMENT} | fzf --preview "git --git-dir {} log --all --decorate --graph --color=always"))

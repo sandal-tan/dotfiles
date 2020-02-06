@@ -82,6 +82,16 @@ else
 fi
 
 if [ "$(pyenv global)" != "${PYTHON_VERSION}" ]; then
+    output "Setting Python version to ${PYTHON_VERSION}" --start
     pyenv global "${PYTHON_VERSION}"
+    output "Setting Python version to ${PYTHON_VERSION}" --end
+else
+    output "Python version is already set. Skipping." --warning
 fi
 
+output "Attempting to install tpm" --header
+if [ ! -e $HOME/.tmux/plugins/tpm ]; then
+    clone "https://github.com/tmux-plugins/tpm" "~/.tmux/plugins/tpm"
+else
+    output "'tpm' is already installed. Skipping." --warningc
+fi
