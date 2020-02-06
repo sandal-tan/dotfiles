@@ -93,5 +93,5 @@ output "Attempting to install 'tpm'" --header
 if [ ! -e $HOME/.tmux/plugins/tpm ]; then
     clone "https://github.com/tmux-plugins/tpm" "$HOME/.tmux/plugins/tpm"
 else
-    output "'tpm' is already installed. Skipping." --warningc
+    output "'tpm' is already installed. Skipping." --warning
 fi
