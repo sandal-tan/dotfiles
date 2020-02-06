@@ -11,4 +11,7 @@ jinja2
 pywal
 colorz
 {{- end }}
+{{- if eq .chezmoi.os "linux" }}
+liquidctl
+{{- end }}
 
