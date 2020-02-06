@@ -21,12 +21,11 @@ bass source $HOME/.environment
 # Load abberviations
 source $HOME/.config/fish/abbr.fish
 
+# Load Functions
+source $HOME/.config/fish/functions.fish
+
 function fish_greeting
-{{- if eq .chezmoi.os "darwin" }}
     archey
-{{- else }}
-    echo "Ubuntu"  
-{{- end }}
     fortune
 end
 
