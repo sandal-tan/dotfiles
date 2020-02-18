@@ -1,0 +1,11 @@
+enter ~/development/.*
+    if test -e Pipfile.lock; source (pipenv --venv)/bin/activate.fish; end;
+
+leave ~/development/.*
+    if set -q VIRTUAL_ENV; deactivate; end;
+
+enter ~/development/pairity/pairity_score
+    set -gx pairity_score_db_url "postgres://iantbaldwin:besucher@localhost:5432";
+
+leave ~/development/pairity/pairity_score
+    set -u pairity_score_db_url;

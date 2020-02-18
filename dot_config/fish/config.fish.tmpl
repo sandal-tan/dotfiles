@@ -9,6 +9,7 @@ fundle plugin 'tuvistavie/oh-my-fish-core'
 fundle plugin 'fishpkg/fish-pwd-info'
 fundle plugin 'fishpkg/fish-pwd-is-home'
 fundle plugin 'jorgebucaran/fish-nvm'
+fundle plugin 'fishpkg/fish-git-util'
 
 fundle init
 
@@ -21,12 +22,16 @@ bass source $HOME/.environment
 # Load abberviations
 source $HOME/.config/fish/abbr.fish
 
-# Load Functions
-source $HOME/.config/fish/functions.fish
-
 function fish_greeting
     archey
     fortune
 end
+
+function activate_ondir --on-variable PWD -d "Run ondir on a change to PWD"
+        if test ! -e "$OLDONDIRWD"; set -g OLDONDIRWD /; end;
+        eval (ondir $OLDONDIRWD $PWD)
+        set -g OLDONDIRWD "$PWD";
+end
+
 
 pyenv init - | source

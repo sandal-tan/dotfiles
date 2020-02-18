@@ -1,3 +1,4 @@
+" vi: ft=vim
 " ======================================= Install Plug =======================================
 " Vim-plug initialization
 
@@ -24,6 +25,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-surround'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -42,6 +44,7 @@ endif
 
 
 " ============================================= Style =============================================
+set mouse=a
 set number
 syntax enable
 colorscheme wal
@@ -57,6 +60,15 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
+
+" ======================================== Clipboard =========================================
+set clipboard=unnamedplus
+nnoremap d "_d
+vnoremap d "_d
+
+" Visual Mode
+vnoremap < <gv
+vnoremap > >gv
 
 " ============================================ coc ===========================================
 " from: https://github.com/neoclide/coc.nvim

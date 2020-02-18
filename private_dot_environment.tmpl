@@ -10,8 +10,17 @@ export USER_DEVELOPMENT=$HOME/development
 export USER_BIN=$HOME/.bin
 export FZF_DEFAULT_OPTS="--preview-window up:95%"
 export NVM_HOME="$HOME/.nvm"
+export PIPENV_VERBOSITY=-1
+export VIRTUAL_ENV_DISABLE_PROMPT="yes"
+
+# https://www.nerdfonts.com/#cheat-sheet
+# https://github.com/ryanoasis/powerline-extra-symbols
+export LEFT_SYMBOL="\uE0B6"
+export RIGHT_SYMBOL="\uE0B4"
+export SHELL_PROMPT="\uE0B5"
 
 export EDITOR=nvim
+export AO_WEBHOOK_URL="https://hooks.slack.com/services/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"
 
 {{- if eq .chezmoi.os "linux" }}
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";

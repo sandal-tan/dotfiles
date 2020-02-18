@@ -4,9 +4,21 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 
 set -g mouse on
-set-option -g status-position top
+set-window-option -g mode-keys vi
+set-option -s set-clipboard off
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -bi"
 
-set -g status-right "#[fg=black]#($HOME/.tmux/plugins/tmux-mem-cpu-load/tmux-mem-cpu-load --interval 2)#[default]"
+# Status
+# set -g status-position top
+set -g status-style 'bg=colour0, fg=colour2'
+
+setw -g window-status-format "#[fg=colour6]#[bg=colour0] #I#[bg=colour0]#[fg=colour7] #W "
+setw -g window-status-current-format "#[fg=colour6]#[bg=colour0]\uE0B6#[fg=black]#[bg=colour6]#I #[bg=brightgreen]#[fg=black] #W#[fg=brightgreen]#[bg=colour0]\uE0B4"
+set -g status-justify right
+set -g status-left-length 100
+
+set -g status-left "#[fg=black]#[bg=colour1] #S #[bg=colour6]#[fg=colour1]\uE0B4#[fg=black] ƒ #($HOME/.tmux/plugins/tmux-mem-cpu-load/tmux-mem-cpu-load --interval 2)#[fg=colour6]#[bg=colour0]\uE0B4#[fg=colour0]"
+set -g status-right ""
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run -b '~/.tmux/plugins/tpm/tpm'

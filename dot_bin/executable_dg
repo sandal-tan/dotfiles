@@ -1,5 +1,0 @@
-#!/bin/bash
-
-project="$(fd -L --hidden ".git\$" $USER_DEVELOPMENT | fzf --preview 'git --git-dir {} log --all --decorate --graph --color=always')"
-echo $(dirname $project)
-cd $(dirname $project)
