@@ -3,7 +3,11 @@
 function new-session()
 {
     read -p "Enter a name for the session: " session_name
-    exec tmux -u new -s "${session_name}"
+    if [[ "${session_name}" == "admin" ]]; then
+        exec bash --noprofile --norc
+    else
+        exec tmux -u new -s "${session_name}"
+    fi
 }
 
 function tmux-session()
