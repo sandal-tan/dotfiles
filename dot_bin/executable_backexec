@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# vi: ft=bash
+# version: 0.0.1
+#
+# Utility to execute commands on the SSH Client
+
+ssh -p "${REMOTE_SSH_PORT}" "$(whoami)@localhost" -- $@

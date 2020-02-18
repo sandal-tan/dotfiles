@@ -6,10 +6,11 @@ set -g @plugin 'thewtex/tmux-mem-cpu-load'
 set -g mouse on
 set-window-option -g mode-keys vi
 set-option -s set-clipboard off
-bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -bi"
+
+# Copy
+bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "remote_copy"
 
 # Status
-# set -g status-position top
 set -g status-style 'bg=colour0, fg=colour2'
 
 setw -g window-status-format "#[fg=colour6]#[bg=colour0] #I#[bg=colour0]#[fg=colour7] #W "

@@ -24,7 +24,7 @@ function fish_prompt
     set_color -b $BG
     set_color black
 
-    printf " "
+    printf " "         
 
     if pwd_is_home
         printf "~"
@@ -42,6 +42,12 @@ function fish_prompt
         transition "yellow" $BG
         set BG "yellow"
         printf "$_projdir"
+    end
+
+    if set -q SSH_CLIENT
+        transition "blue" $BG
+        set BG "blue"
+        printf (hostname)
     end
 
     if git_is_repo

@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Provides copy integration with a remote mac clipboard.
+#
+# version: 0.0.1
+to_copy="'$(cat -)'"
+backexec "echo ${to_copy} | pbcopy"

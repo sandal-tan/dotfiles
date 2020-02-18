@@ -29,10 +29,6 @@ Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
-{{- if eq .chezmoi.os "darwin" }}
-set clipboard+=unnamedplus
-{{- end }}
-
 " ========================================== Bootstrap ==========================================
 " from: http://nvim.fisadev.com
 " Install plugins the first time vim runs
@@ -62,7 +58,20 @@ set softtabstop=4
 set shiftwidth=4
 
 " ======================================== Clipboard =========================================
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
+let g:clipboard = {
+    \   'name': 'remote',
+    \   'copy': {
+    \       '+': 'remote_copy',
+    \       '*': 'remote_copy'
+    \   },
+    \   'paste': {
+    \       '+': 'backexec pbpaste',
+    \       '*': 'backexec pbpaste'
+    \   },
+    \   'cache_enabled': 0
+    \}
+
 nnoremap d "_d
 vnoremap d "_d
 
