@@ -30,6 +30,13 @@ else
     output "Command line developer tools are already installed, Skipping." --warning
 fi
 
-echo ""
+output "Installing Homebrew" --header
+if ! which brew &> /dev/null; then
+    output "Installing Brew" --start
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    output "Brew is installed" --end
+else
+    output "Brew is already installed. Skipping." --warning
+fi
 
 bash "${BASH_SOURCE%/*}/../common/init.sh"
