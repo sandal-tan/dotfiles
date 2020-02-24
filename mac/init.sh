@@ -30,6 +30,19 @@ else
     output "Command line developer tools are already installed, Skipping." --warning
 fi
 
-echo ""
+output "Installing Homebrew" --header
+if ! which brew &> /dev/null; then
+    output "Installing Brew" --start
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    output "Brew is installed" --end
+else
+    output "Brew is already installed. Skipping." --warning
+fi
+
+output "Configuring Dock.app" --header
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 1000
+defaults write com.appl.dock no-bouncing -bool true
+killall Dock
 
 bash "${BASH_SOURCE%/*}/../common/init.sh"

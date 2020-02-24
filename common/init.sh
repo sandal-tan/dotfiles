@@ -48,15 +48,19 @@ output "Apply dotfiles" --header
 if [ ! -e ~/.local/share/chezmoi ]; then
     output "Initializing chezmoi" --start
     ${USER_BIN}/chezmoi init "${REPO_URL}"
+    cd $HOME/.local/share/chezmoi/
+    git checkout init # TODO Change this back to REF
+    cd -
     output "Initializing chezmoi" --end
     output "Apply chezmoi" --start
     ${USER_BIN}/chezmoi apply
     output "Apply chezmoi" --end
     ln -s "${HOME}/.local/share/chezmoi" "${USER_DEVELOPMENT}/dotfiles"
-    source ~/.bashrc
 else
     output "Dotfiles have already been applied. Skipping." --warning
 fi
+
+source ~/.environment
 
 output "Attempting to install 'brew bundle'" --header
 if ! brew tap | grep homebrew/bundle &> /dev/null; then
