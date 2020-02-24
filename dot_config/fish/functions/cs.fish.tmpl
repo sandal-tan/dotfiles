@@ -1,6 +1,6 @@
 # vi: ft=fish
 function cs
-    wal -stne $argv ^ /dev/null
+    wal -stne --backend colorthief $argv ^ /dev/null
     bash "$WIDGETS_CONFIG/pecan/wal-set"
     # Clear the color settings
     #
