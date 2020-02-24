@@ -12,7 +12,19 @@ brew "neovim", args: ["HEAD"]
 brew "shellcheck"
 brew "tfenv"
 brew "fd"
-brew "aws-vault"
 brew "gotop"
 brew "tree"
 brew "ondir"
+{{- if eq .chezmoi.os "linux" }}
+
+# Linux Specific Packages
+brew "aws-vault"
+{{- else if eq .chezmoi.os "darwin" }}
+
+# Mac Specific Packages
+tap "homebrew/cask-fonts"
+brew "archey"
+cask "aws-vault"
+cask "alacritty"
+cask "font-hasklig-nerd-font-mono"
+{{- end }}

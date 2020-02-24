@@ -39,4 +39,10 @@ else
     output "Brew is already installed. Skipping." --warning
 fi
 
+output "Configuring Dock.app" --header
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 1000
+defaults write com.appl.dock no-bouncing -bool true
+killall Dock
+
 bash "${BASH_SOURCE%/*}/../common/init.sh"
