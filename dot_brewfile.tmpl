@@ -16,6 +16,8 @@ brew "gotop"
 brew "tree"
 brew "ondir"
 brew "csvkit"
+brew "tmux"
+brew "bat"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -25,9 +27,16 @@ brew "aws-vault"
 {{- else if eq .chezmoi.os "darwin" }}
 
 # Mac Specific Packages
-tap "homebrew/cask-fonts"
+tap "koekeishiya/formulae"
+brew "yabai"
+
+brew "sassc"
 brew "archey"
 cask "aws-vault"
 cask "alacritty"
+cask "ubersicht"
+brew "pidof"
+
+tap "homebrew/cask-fonts"
 cask "font-hasklig-nerd-font-mono"
 {{- end }}

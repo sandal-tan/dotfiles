@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# vi: ft=sh
+
+# General Layout Configuration
+yabai -m config layout          bsp
+yabai -m config top_padding     25
+yabai -m config bottom_padding  10
+yabai -m config left_padding    10
+yabai -m config right_padding   10

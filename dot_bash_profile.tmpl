@@ -1,0 +1,8 @@
+#!/bin/bash
+# vi: ft=bash
+
+{{- if eq .chezmoi.os "darwin" }}
+if [ "-e ${HOME}/.bashrc" ]; then
+   source "${HOME}/.bashrc"
+fi
+{{- end }}

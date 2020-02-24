@@ -3,5 +3,12 @@
 # Provides copy integration with a remote mac clipboard.
 #
 # version: 0.0.1
+# vi: ft=bash
+
+{{- if eq .chezmoi.os "linux" }}
 to_copy="$(cat -)"
 backexec "echo -e \"${to_copy}\" | pbcopy"
+{{- else }}
+ansi --red "\`remote_copy\` is not available on this system."
+exit 1
+{{- end }}

@@ -45,4 +45,9 @@ defaults write com.apple.dock autohide-delay -float 1000
 defaults write com.appl.dock no-bouncing -bool true
 killall Dock
 
+output "Configuring Finder" --header
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write com.apple.finder CreateDesktop -bool false
+killall Finder
+
 bash "${BASH_SOURCE%/*}/../common/init.sh"
