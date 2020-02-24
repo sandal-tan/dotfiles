@@ -60,7 +60,7 @@ else
     output "Dotfiles have already been applied. Skipping." --warning
 fi
 
-source ~/.environmentbrew 
+source ~/.environment
 
 output "Attempting to install 'brew bundle'" --header
 if ! brew tap | grep homebrew/bundle &> /dev/null; then
