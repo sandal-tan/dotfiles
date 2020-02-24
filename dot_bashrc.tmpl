@@ -1,26 +1,26 @@
 # vi: ft=bash
 
-echo "$DISPLAY"
+if shopt -q login_shell; then
+    # Environment Variables
+    if [ -f ~/.environment ]; then
+        source ~/.environment
+    fi
 
-# Environment Variables
-if [ -f ~/.environment ]; then
-    source ~/.environment
+    # Aliases
+    if [ -f ~/.bash_aliases ]; then
+        source ~/.bash_aliases
+    fi
+
+    # Hand over to fish
+    if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+    fi
+    _fish=$(which fish)
+    export SHELL=$_fish
+
+    {{- if eq .chezmoi.os "linux" }}
+    exec tmux-session
+    {{- else }}
+    exec $_fish
+    {{- end }}
 fi
-
-# Aliases
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
-
-# Hand over to fish
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-_fish=$(which fish)
-export SHELL=$_fish
-
-{{- if eq .chezmoi.os "linux" }}
-exec tmux-session
-{{- else }}
-exec $_fish
-{{- end }}

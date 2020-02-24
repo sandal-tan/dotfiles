@@ -5,4 +5,4 @@
 #
 # Utility to execute commands on the SSH Client
 
-ssh -p "${REMOTE_SSH_PORT}" "$(whoami)@localhost" -- $@
+ssh -p "${REMOTE_SSH_PORT}" "$(whoami)@localhost" -- "$@"

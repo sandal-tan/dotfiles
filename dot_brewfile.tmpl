@@ -16,3 +16,8 @@ brew "aws-vault"
 brew "gotop"
 brew "tree"
 brew "ondir"
+brew "csvkit"
+{{- if eq .chezmoi.os "linux" }}
+tap "jonasmalacofilho/homebrew-liquidctl"
+brew "jonasmalacofilho/liquidctl/liquidctl"
+{{- end }}
