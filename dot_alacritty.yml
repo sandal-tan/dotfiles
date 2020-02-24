@@ -15,4 +15,5 @@ font:
 
 background_opacity: 0.8
 
-colors: !include ~/.cache/wal/colors-alacritty.yml
+# BEGINCOLOR
+# ENDCOLOR

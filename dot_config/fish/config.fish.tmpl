@@ -47,13 +47,16 @@ if not test -e "$HOME/.bin/pecan-style"
     ln -s "$WIDGETS_CONFIG/pecan/pecan-style" "$HOME/.bin/pecan-style"
 end
 
+if [ (cat "$WIDGETS_CONFIG/pecan/.cache") != "maria" ]
 pecan-style --load maria > /dev/null
+end
 {{- end }}
  
 # Load abberviations
 source $HOME/.config/fish/abbr.fish
 
 function fish_greeting
+    cs
     archey
     fortune
 end
