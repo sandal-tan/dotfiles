@@ -1,3 +1,6 @@
+{{- if eq .chezmoi.os "darwin" }}
+# SSH Config Goes Here
+
 Host matcha
     Hostname {{ (index (index (onepassword "matcha").details.sections 0).fields 0).v }}
     Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
@@ -10,3 +13,6 @@ Host matcha-proxy
     RemoteForward 2000 localhost:22
     ControlMaster Auto
     ControlPath ~/.ssh/sockets/%r@%h:%p
+{{- else }}
+# SSH Config Goes Here
+{{- end }}
