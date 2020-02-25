@@ -61,7 +61,9 @@ end
 source $HOME/.config/fish/abbr.fish
 
 function fish_greeting
+{{- if eq .chezmoi.os "darwin" }}
     cs
+{{- end }}
     archey
     fortune
 end

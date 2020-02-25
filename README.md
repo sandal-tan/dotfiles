@@ -41,6 +41,8 @@ I would like to look into the following:
 - TMUX and AWS hosting remote sessions
 - TMUX-based IDE commands. A way to edit python, tie that editor to an instance of ipython that is tied to the code,
   and a visual way to see and run pytests for relevant pieces of code.
+- TODO tracking. Make that pattern useable for tasks.
+- Add a post-init section to move some initial configuration out of the way of fish
 
 ## Development
 
