@@ -50,4 +50,7 @@ defaults write NSGlobalDomain _HIHideMenuBar -bool true
 defaults write com.apple.finder CreateDesktop -bool false
 killall Finder
 
+output "Configuring SSH" --header
+mkdir -p ~/.ssh/sockets/
+
 bash "${BASH_SOURCE%/*}/../common/init.sh"

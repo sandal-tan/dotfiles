@@ -27,11 +27,16 @@ if not which node > /dev/null; nvm use lts; end
 if brew services list | grep "yabai stopped" > /dev/null
     brew services start yabai
 end
-#
+
 # If Ubersicht isn't running, start it.
 set bersicht_path "/Applications/Übersicht.app"
 if test -e $bersicht_path; and not ps -ef | grep 'bersicht$' > /dev/null
     open $bersicht_path
+end
+
+if not test -e $HOME/.opsetupdone
+    op signin team-pairity.1password.com ibaldwin@pairity.ai
+    touch $HOME/.opsetupdone
 end
 
 set -gx WIDGETS_CONFIG "$HOME/Library/Application Support/Übersicht/widgets"
