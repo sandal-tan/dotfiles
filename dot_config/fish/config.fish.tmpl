@@ -10,6 +10,7 @@ fundle plugin 'fishpkg/fish-pwd-info'
 fundle plugin 'fishpkg/fish-pwd-is-home'
 fundle plugin 'jorgebucaran/fish-nvm'
 fundle plugin 'fishpkg/fish-git-util'
+fundle plugin 'jorgebucaran/fish-getopts'
 
 fundle init
 
@@ -24,37 +25,37 @@ if not which node > /dev/null; nvm use lts; end
 
 {{- if eq .chezmoi.os "darwin" }}
 # If we have `yabai` installed, and it is stopped, start it
-if brew services list | grep "yabai stopped" > /dev/null
-    brew services start yabai
-end
+#if brew services list | grep "yabai stopped" > /dev/null
+    #brew services start yabai > /dev/null &
+#end
 
 # If Ubersicht isn't running, start it.
-set bersicht_path "/Applications/Übersicht.app"
-if test -e $bersicht_path; and not ps -ef | grep 'bersicht$' > /dev/null
-    open $bersicht_path
-end
+#set bersicht_path "/Applications/Übersicht.app"
+#if test -e $bersicht_path; and not ps -ef | grep 'bersicht$' > /dev/null
+    #open $bersicht_path > /dev/null &
+#end
 
-if not test -e $HOME/.opsetupdone
-    op signin team-pairity.1password.com ibaldwin@pairity.ai
-    touch $HOME/.opsetupdone
-end
+#if not test -e $HOME/.opsetupdone
+    #op signin team-pairity.1password.com ibaldwin@pairity.ai
+    #touch $HOME/.opsetupdone
+#end
 
 set -gx WIDGETS_CONFIG "$HOME/Library/Application Support/Übersicht/widgets"
-if not test -e "$WIDGETS_CONFIG/pecan"
-    git clone https://github.com/zzzeyez/pecan.git "$WIDGETS_CONFIG/pecan"
-end
+#if not test -e "$WIDGETS_CONFIG/pecan"
+    #git clone https://github.com/zzzeyez/pecan.git "$WIDGETS_CONFIG/pecan"
+#end
 
-if test -e "$WIDGETS_CONFIG/getting-started.coffee"
-    rm -rf "$WIDGETS_CONFIG/getting-started.coffee"
-end
+#if test -e "$WIDGETS_CONFIG/getting-started.coffee"
+    #rm -rf "$WIDGETS_CONFIG/getting-started.coffee"
+#end
 
-if not test -e "$HOME/.bin/pecan-style"
-    ln -s "$WIDGETS_CONFIG/pecan/pecan-style" "$HOME/.bin/pecan-style"
-end
+#if not test -e "$HOME/.bin/pecan-style"
+    #ln -s "$WIDGETS_CONFIG/pecan/pecan-style" "$HOME/.bin/pecan-style"
+#end
 
-if [ (cat "$WIDGETS_CONFIG/pecan/.cache") != "maria" ]
-pecan-style --load maria > /dev/null
-end
+#if [ (cat "$WIDGETS_CONFIG/pecan/.cache") != "maria" ]
+#pecan-style --load maria > /dev/null &
+#end
 {{- end }}
  
 # Load abberviations
@@ -62,7 +63,7 @@ source $HOME/.config/fish/abbr.fish
 
 function fish_greeting
 {{- if eq .chezmoi.os "darwin" }}
-    cs
+    cs &
 {{- end }}
     archey
     fortune
