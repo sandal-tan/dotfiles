@@ -35,4 +35,5 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info${INFOPATH+:$INFOPATH}";
 
 {{- if eq .chezmoi.os "darwin" }}
 export NOTES_HOME="${HOME}/Documents/notes/"
+export AWS_VAULT_KEYCHAIN_NAME="login"
 {{- end }}

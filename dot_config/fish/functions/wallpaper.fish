@@ -80,6 +80,9 @@ end
 
 set -l artists (__wallpaper_ls)
 complete -c wallpaper -f
+complete -c wallpaper -n "__fish_seen_subcommand_from set; and __fish_seen_subcommand_from $artists" -a "(__wallpaper_ls (commandline | cut -d' ' -f3))"
 complete -c wallpaper -n "not __fish_seen_subcommand_from $commands" -a "$commands"
-complete -c wallpaper -n "__fish_seen_subcommand_from set" -a "(__wallpaper_ls)"
+# complete artist
+complete -c wallpaper -n "__fish_seen_subcommand_from set; and not __fish_seen_subcommand_from $artists" -a "(__wallpaper_ls)"
 complete -c wallpaper -n "__fish_seen_subcommand_from ls" -a "(__wallpaper_ls)"
+# Complete work
