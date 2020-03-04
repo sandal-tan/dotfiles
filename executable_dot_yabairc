@@ -31,10 +31,13 @@ yabai -m config normal_window_opacity   0.9
 yabai -m config window_opacity_duration 0.0
 
 # App Rules
+centered_apps="^Slack ^Messages$"
+for app in centered_apps; do
+    yabai -m rule --add app="$app" $centerd_args
+done
+
 yabai -m rule --add label="Slack_Call" app = "^Slack$" manage=off layer=above grid="8:8:8:8:1:1"
 #yabai -m rule --add label="Slack_Call" app = "^Slack | Slack call with" manage=off layer=above grid="8:8:8:8:1:1"
-yabai -m rule --add label="Slack" app="^Slack | .* | Pairity$" $centerd_args
-yabai -m rule --add label="Messages" app="^Messages$" $centerd_args
 
 
 # Autoupdate yabai from HEAD
