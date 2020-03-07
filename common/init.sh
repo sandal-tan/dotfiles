@@ -53,7 +53,14 @@ if [ ! -e ~/.local/share/chezmoi ]; then
     cd -
     output "Initializing chezmoi" --end
     output "Apply chezmoi" --start
-    ${USER_BIN}/chezmoi apply
+    {USER_BIN}/chezmoi apply ~/.bashrc
+    {USER_BIN}/chezmoi apply ~/.bash_profile
+    {USER_BIN}/chezmoi apply ~/.environment
+    ${USER_BIN}/chezmoi apply ~/.environment
+    ${USER_BIN}/chezmoi apply ~/.brewfile
+    ${USER_BIN}/chezmoi apply ~/.tmux.conf
+    mkdir -p ~/.pyenv
+    ${USER_BIN}/chezmoi apply ~/.pyenv/default-packages
     output "Apply chezmoi" --end
     ln -s "${HOME}/.local/share/chezmoi" "${USER_DEVELOPMENT}/dotfiles"
 else
@@ -79,7 +86,7 @@ install_from_git https://github.com/molovo/revolver revolver/revolver
 output "Setting up python environment" --header
 if [ ! -e "${HOME}/.pyenv/versions/${PYTHON_VERSION}" ]; then
     output "Installing Python ${PYTHON_VERSION}" --start
-    pyenv install "${PYTHON_VERSION}"
+    pyenv install "${PYTHON_VERSION}" > /dev/null
     output "Installing Python ${PYTHON_VERSION}" --end
 else
     output "Python environment is already setup. Skipping." --warning
