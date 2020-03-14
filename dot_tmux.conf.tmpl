@@ -10,6 +10,8 @@ set-option -s set-clipboard off
 {{- if eq .chezmoi.os "linux" }}
 # Copy
 bind -T copy-mode-vi 'y' send -X copy-pipe-and-cancel "remote_copy"
+{{- else }}
+set-option -g status-position top
 {{- end }}
 
 # Status

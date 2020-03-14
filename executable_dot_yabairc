@@ -36,9 +36,9 @@ for app in centered_apps; do
     yabai -m rule --add app="$app" $centerd_args
 done
 
-yabai -m rule --add label="Slack_Call" app = "^Slack$" manage=off layer=above grid="8:8:8:8:1:1"
-#yabai -m rule --add label="Slack_Call" app = "^Slack | Slack call with" manage=off layer=above grid="8:8:8:8:1:1"
-
+yabai -m rule --add app="^Slack$" $centerd_args
+yabai -m rule --add app="^Messages$" $centerd_args
+yabai -m rule --add app="^Roon$" $centerd_args
 
 # Autoupdate yabai from HEAD
 # From: https://github.com/koekeishiya/yabai/wiki/Tips-and-tricks#auto-updating-from-head-via-brew
