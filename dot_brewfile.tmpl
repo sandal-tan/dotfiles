@@ -20,9 +20,9 @@ brew "tmux"
 brew "bat"
 brew "ranger"
 brew "elixir"
-brew "elm"
-brew "elm-format"
 brew "yarn-completion"
+brew "fswatch"
+brew "gpg"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -34,6 +34,7 @@ brew "aws-vault"
 # Mac Specific Packages
 tap "koekeishiya/formulae"
 brew "yabai", args: ["HEAD"]
+brew "autossh"
 
 brew "sassc"
 brew "archey"
@@ -54,4 +55,6 @@ cask "keybase"
 
 tap "homebrew/cask-fonts"
 cask "font-hasklig-nerd-font-mono"
+
+cask "cyberduck"
 {{- end }}
