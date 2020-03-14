@@ -2,6 +2,8 @@
 " ======================================= Install Plug =======================================
 " Vim-plug initialization
 
+filetype plugin on
+
 let vim_plug_just_installed = 0
 let vim_plug_path = expand('~/.config/nvim/autoload/plug.vim')
 if !filereadable(vim_plug_path)
@@ -27,6 +29,7 @@ Plug 'dylanaraps/wal.vim'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'godlygeek/tabular'
+Plug 'chrisbra/Colorizer'
 
 call plug#end()
 
@@ -187,3 +190,4 @@ xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+autocmd CursorHold * silent call CocActionAsync('highlight')

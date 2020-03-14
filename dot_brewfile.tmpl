@@ -18,6 +18,11 @@ brew "ondir"
 brew "csvkit"
 brew "tmux"
 brew "bat"
+brew "ranger"
+brew "elixir"
+brew "elm"
+brew "elm-format"
+brew "yarn-completion"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -28,7 +33,8 @@ brew "aws-vault"
 
 # Mac Specific Packages
 tap "koekeishiya/formulae"
-brew "yabai"
+brew "yabai", args: ["HEAD"]
+brew "skhd", args: ["HEAD"]
 
 brew "sassc"
 brew "archey"
@@ -37,11 +43,17 @@ cask "alacritty"
 cask "ubersicht"
 brew "pidof"
 brew "m-cli", args: ["HEAD"]
+brew "neomutt"
 
 cask "1password"
 cask "1password-cli"
 cask "opera"
 cask "spotify"
+cask "brave-browser"
+cask "slack"
+cask "keybase"
+cask "Roon"
+cask "Plex"
 
 tap "homebrew/cask-fonts"
 cask "font-hasklig-nerd-font-mono"

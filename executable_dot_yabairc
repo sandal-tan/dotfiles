@@ -2,10 +2,44 @@
 
 # vi: ft=sh
 
+# Center in Grid
+# -----------------
+# |   |   |   |   |
+# |   |xxx|xxx|   |
+# |   |xxx|xxx|   |
+# |   |   |   |   |
+# -----------------
+grid_centered="4:4:1:1:2:2"
+centerd_args="manage=off layer=above grid=$grid_centered"
+
+
 # General Layout Configuration
-yabai -m config layout          bsp
-yabai -m config top_padding     25
-yabai -m config bottom_padding  10
-yabai -m config left_padding    10
-yabai -m config right_padding   10
-yabai -m config window_gap      10
+yabai -m config layout                  bsp
+yabai -m config top_padding             26
+yabai -m config bottom_padding          10
+yabai -m config left_padding            10
+yabai -m config right_padding           10
+yabai -m config window_gap              10
+
+# Floating Config
+yabai -m config window_topmost          on
+
+# General Opacaity
+yabai -m config window_opacity          on
+yabai -m config active_window_opacity   0.95
+yabai -m config normal_window_opacity   0.9
+yabai -m config window_opacity_duration 0.0
+
+# App Rules
+centered_apps="^Slack ^Messages$"
+for app in centered_apps; do
+    yabai -m rule --add app="$app" $centerd_args
+done
+
+yabai -m rule --add app="^Slack$" $centerd_args
+yabai -m rule --add app="^Messages$" $centerd_args
+yabai -m rule --add app="^Roon$" $centerd_args
+
+# Autoupdate yabai from HEAD
+# From: https://github.com/koekeishiya/yabai/wiki/Tips-and-tricks#auto-updating-from-head-via-brew
+YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

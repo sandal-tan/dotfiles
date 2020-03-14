@@ -10,15 +10,22 @@ Host matcha-proxy
     Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
     LocalForward 8888 localhost:8888
     LocalForward 8787 localhost:8787
+    LocalForward 8080 192.168.50.1:80
     RemoteForward 2000 localhost:22
     ControlMaster Auto
     ControlPath ~/.ssh/sockets/%r@%h:%p
+
+Host bastion
+    Hostname {{ (index (index (onepassword "bastion").details.sections 0).fields 0).v }}
+    Port {{ (index (index (onepassword "bastion").details.sections 0).fields 3).v }}
+    User ec2-user
 
 Host matcha-bastion
     Hostname {{ (index (index (onepassword "matcha").details.sections 0).fields 0).v }}
     Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
     LocalForward 8888 localhost:8888
     LocalForward 8787 localhost:8787
+    LocalForward 8080 192.168.50.1:80
     RemoteForward 2000 localhost:22
     ControlMaster Auto
     ControlPath ~/.ssh/sockets/%r@%h:%p

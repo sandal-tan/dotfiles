@@ -1,0 +1,6 @@
+#!/bin/zsh
+#
+# Hand over to fish
+_fish=$(which fish)
+export SHELL=$_fish
+exec $HOME/.bin/tmux-session
