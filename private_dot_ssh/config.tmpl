@@ -13,6 +13,16 @@ Host matcha-proxy
     RemoteForward 2000 localhost:22
     ControlMaster Auto
     ControlPath ~/.ssh/sockets/%r@%h:%p
+
+Host matcha-bastion
+    Hostname {{ (index (index (onepassword "matcha").details.sections 0).fields 0).v }}
+    Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
+    LocalForward 8888 localhost:8888
+    LocalForward 8787 localhost:8787
+    RemoteForward 2000 localhost:22
+    ControlMaster Auto
+    ControlPath ~/.ssh/sockets/%r@%h:%p
+    ProxyJump bastion
 {{- else }}
 # SSH Config Goes Here
 {{- end }}
