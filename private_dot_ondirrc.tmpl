@@ -13,3 +13,9 @@ leave ~/development/pairity/pairity_score
     set -u pairity_score_db_url;
     set -u PGHOST;
     set -u PGPASSWORD;
+
+enter ~/development/pairity/github
+    set -gx GITHUB_TOKEN "{{ (index (index (onepassword "Mrs. Gitty - Github").details.sections 1).fields 1).v }}";
+
+leave ~/development/pairity/github
+    set -u GITHUB_TOKEN;

@@ -30,7 +30,6 @@ Host matcha-bastion
     ControlMaster Auto
     ControlPath ~/.ssh/sockets/%r@%h:%p
     ProxyJump bastion
-
 {{- else }}
 # SSH Config Goes Here
 {{- end }}

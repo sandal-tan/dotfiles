@@ -1,3 +1,7 @@
+tap "homebrew/cask"
+tap "homebrew/services"
+tap "jawshooah/pyenv"
+
 brew "zsh"
 brew "pyenv"
 brew "jawshooah/pyenv/pyenv-default-packages", args: ["HEAD"]
@@ -35,6 +39,7 @@ brew "aws-vault"
 tap "koekeishiya/formulae"
 brew "yabai", args: ["HEAD"]
 brew "autossh"
+brew "skhd", args: ["HEAD"]
 
 brew "sassc"
 brew "archey"
@@ -44,6 +49,7 @@ cask "ubersicht"
 brew "pidof"
 brew "m-cli", args: ["HEAD"]
 brew "neomutt"
+brew "postgresql"
 
 cask "1password"
 cask "1password-cli"
@@ -52,9 +58,13 @@ cask "spotify"
 cask "brave-browser"
 cask "slack"
 cask "keybase"
+cask "Roon"
+cask "Plex"
 
 tap "homebrew/cask-fonts"
 cask "font-hasklig-nerd-font-mono"
 
 cask "cyberduck"
+mas "Jira", id: 1475897096
+cask "docker"
 {{- end }}
