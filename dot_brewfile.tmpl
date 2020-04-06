@@ -27,6 +27,7 @@ brew "elixir"
 brew "yarn-completion"
 brew "fswatch"
 brew "gpg"
+brew "github/gh/gh"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -50,6 +51,7 @@ brew "pidof"
 brew "m-cli", args: ["HEAD"]
 brew "neomutt"
 brew "postgresql"
+cask "github"
 
 cask "1password"
 cask "1password-cli"
