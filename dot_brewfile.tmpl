@@ -28,6 +28,10 @@ brew "yarn-completion"
 brew "fswatch"
 brew "gpg"
 brew "github/gh/gh"
+brew "nektos/tap/act"
+brew "ripgrep"
+brew "mdp"
+brew "asciinema"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -51,8 +55,9 @@ brew "pidof"
 brew "m-cli", args: ["HEAD"]
 brew "neomutt"
 brew "postgresql"
-cask "github"
+brew "khanhas/tap/spicetify-cli"
 
+cask "github"
 cask "1password"
 cask "1password-cli"
 cask "opera"

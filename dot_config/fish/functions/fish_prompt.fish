@@ -61,7 +61,7 @@ function fish_prompt
         #if git_is_stashed
             #printf "..."
         #end
-        printf (git_ahead)
+        #printf (git_ahead)
     end
     
 

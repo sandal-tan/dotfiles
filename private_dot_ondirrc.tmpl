@@ -1,5 +1,5 @@
-enter ~/development/.*
-    if test -e Pipfile.lock; source (pipenv --venv)/bin/activate.fish; end;
+enter ~/development/.
+    if test -e pyproject.toml; source (poetry env info -p)/bin/activate.fish; else if test -e Pipfile.lock; source (pipenv --venv)/bin/activate.fish; end;
 
 leave ~/development/.*
     if set -q VIRTUAL_ENV; deactivate; end;
