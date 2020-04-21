@@ -28,7 +28,7 @@ echo "* Initializing with: ${REF}"
 if [ "${MODE}" == "live" ]; then
     REPO_URL="https://github.com/sandal-tan/dotfiles/archive/${REF}.zip"
 elif [ "${MODE}" == "test" ]; then
-    REPO_URL="http://192.168.86.21:8000/dotfiles.zip"
+    REPO_URL="http://192.168.86.26:8000/dotfiles.zip"
 fi
 
 echo "* Initializing from: ${REPO_URL}"

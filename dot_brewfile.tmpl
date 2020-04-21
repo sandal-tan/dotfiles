@@ -1,3 +1,7 @@
+tap "homebrew/cask"
+tap "homebrew/services"
+tap "jawshooah/pyenv"
+
 brew "zsh"
 brew "pyenv"
 brew "jawshooah/pyenv/pyenv-default-packages", args: ["HEAD"]
@@ -20,9 +24,14 @@ brew "tmux"
 brew "bat"
 brew "ranger"
 brew "elixir"
-brew "elm"
-brew "elm-format"
 brew "yarn-completion"
+brew "fswatch"
+brew "gpg"
+brew "github/gh/gh"
+brew "nektos/tap/act"
+brew "ripgrep"
+brew "mdp"
+brew "asciinema"
 {{- if eq .chezmoi.os "linux" }}
 
 # Linux Specific Packages
@@ -34,6 +43,7 @@ brew "aws-vault"
 # Mac Specific Packages
 tap "koekeishiya/formulae"
 brew "yabai", args: ["HEAD"]
+brew "autossh"
 brew "skhd", args: ["HEAD"]
 
 brew "sassc"
@@ -44,7 +54,10 @@ cask "ubersicht"
 brew "pidof"
 brew "m-cli", args: ["HEAD"]
 brew "neomutt"
+brew "postgresql"
+brew "khanhas/tap/spicetify-cli"
 
+cask "github"
 cask "1password"
 cask "1password-cli"
 cask "opera"
@@ -57,4 +70,8 @@ cask "Plex"
 
 tap "homebrew/cask-fonts"
 cask "font-hasklig-nerd-font-mono"
+
+cask "cyberduck"
+mas "Jira", id: 1475897096
+cask "docker"
 {{- end }}

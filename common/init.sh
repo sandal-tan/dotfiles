@@ -53,9 +53,9 @@ if [ ! -e ~/.local/share/chezmoi ]; then
     cd -
     output "Initializing chezmoi" --end
     output "Apply chezmoi" --start
-    {USER_BIN}/chezmoi apply ~/.bashrc
-    {USER_BIN}/chezmoi apply ~/.bash_profile
-    {USER_BIN}/chezmoi apply ~/.environment
+    ${USER_BIN}/chezmoi apply ~/.bashrc
+    ${USER_BIN}/chezmoi apply ~/.bash_profile
+    ${USER_BIN}/chezmoi apply ~/.environment
     ${USER_BIN}/chezmoi apply ~/.environment
     ${USER_BIN}/chezmoi apply ~/.brewfile
     ${USER_BIN}/chezmoi apply ~/.tmux.conf
