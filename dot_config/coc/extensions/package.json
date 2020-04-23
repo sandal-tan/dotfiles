@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "coc-json": ">=1.2.5",
+    "coc-python": ">=1.2.9",
+    "coc-reason": ">=0.1.0",
+    "coc-sql": ">=0.2.6"
+  }
+}

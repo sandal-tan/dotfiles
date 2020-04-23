@@ -1,0 +1,21 @@
+[default]
+output = json
+region = us-east-1
+
+[profile pairity-mfa]
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org
+
+
+[profile pairity-org-admin]
+role_arn       = arn:aws:iam::108466283686:role/account-admin-role
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org
+
+[profile pairity-dev-admin]
+role_arn       = arn:aws:iam::808057624432:role/account-admin-role
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org

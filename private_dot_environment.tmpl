@@ -1,0 +1,39 @@
+#!/bin/bash
+# vi: ft=bash
+# Environment Variables
+
+
+export HOMEBREW_BUNDLE_FILE=$HOME/.brewfile
+export PYENV_ROOT="${HOME}/.pyenv"
+export USER_DEVELOPMENT=$HOME/development
+export USER_BIN=$HOME/.bin
+export FZF_DEFAULT_OPTS="--preview-window up:95%"
+export NVM_HOME="$HOME/.nvm"
+export PIPENV_VERBOSITY=-1
+export VIRTUAL_ENV_DISABLE_PROMPT="yes"
+export REMOTE_SSH_PORT=2000
+export WALLPAPER_HOME="$HOME/.config/wallpapers"
+
+# https://www.nerdfonts.com/#cheat-sheet
+# https://github.com/ryanoasis/powerline-extra-symbols
+export LEFT_SYMBOL="\uE0B6"
+export RIGHT_SYMBOL="\uE0B4"
+export SHELL_PROMPT="\uE0B5"
+
+export EDITOR=nvim
+
+{{- if eq .chezmoi.os "linux" }}
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info${INFOPATH+:$INFOPATH}";
+export PATH=$HOME/.bin:$PYENV_ROOT/bin:$PATH
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+export NOTES_HOME="${HOME}/Documents/notes/"
+export AWS_VAULT_KEYCHAIN_NAME="login"
+export PATH=$HOME/.bin:$PYENV_ROOT/bin:/usr/local/bin:$PATH
+{{- end }}

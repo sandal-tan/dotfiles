@@ -1,0 +1,30 @@
+# vi: ft=fish
+# General
+abbr vim 'nvim'
+abbr dot 'cd $USER_DEVELOPMENT/dotfiles'
+abbr b 'backexec'
+
+# Git
+abbr gs 'git status'
+abbr ga 'git add'
+abbr gc "git commit -am '"
+abbr gph 'git push'
+abbr gpl 'git pull'
+abbr gb 'git branch'
+abbr gco 'git checkout'
+{{- if eq .chezmoi.os "darwin" }}
+abbr gcl 'git clone (pbpaste)'
+abbr w 'wallpaper'
+{{- else }}
+abbr gcl 'git clone'
+{{- end }}
+
+# Chezmoi
+abbr ce 'chezmoi edit'
+abbr ca 'chezmoi apply'
+
+# Brew
+abbr bb 'brew bundle'
+
+# Tree
+abbr t 'tree -L 1 -ah'

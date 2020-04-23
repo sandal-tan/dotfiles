@@ -1,0 +1,77 @@
+tap "homebrew/cask"
+tap "homebrew/services"
+tap "jawshooah/pyenv"
+
+brew "zsh"
+brew "pyenv"
+brew "jawshooah/pyenv/pyenv-default-packages", args: ["HEAD"]
+brew "fish"
+brew "cloc"
+brew "fortune"
+brew "ctags"
+brew "fzf"
+brew "go"
+brew "jq"
+brew "neovim", args: ["HEAD"]
+brew "shellcheck"
+brew "tfenv"
+brew "fd"
+brew "gotop"
+brew "tree"
+brew "ondir"
+brew "csvkit"
+brew "tmux"
+brew "bat"
+brew "ranger"
+brew "elixir"
+brew "yarn-completion"
+brew "fswatch"
+brew "gpg"
+brew "github/gh/gh"
+brew "nektos/tap/act"
+brew "ripgrep"
+brew "mdp"
+brew "asciinema"
+{{- if eq .chezmoi.os "linux" }}
+
+# Linux Specific Packages
+tap "jonasmalacofilho/homebrew-liquidctl"
+brew "jonasmalacofilho/liquidctl/liquidctl"
+brew "aws-vault"
+{{- else if eq .chezmoi.os "darwin" }}
+
+# Mac Specific Packages
+tap "koekeishiya/formulae"
+brew "yabai", args: ["HEAD"]
+brew "autossh"
+brew "skhd", args: ["HEAD"]
+
+brew "sassc"
+brew "archey"
+cask "aws-vault"
+cask "alacritty"
+cask "ubersicht"
+brew "pidof"
+brew "m-cli", args: ["HEAD"]
+brew "neomutt"
+brew "postgresql"
+brew "khanhas/tap/spicetify-cli"
+
+cask "github"
+cask "1password"
+cask "1password-cli"
+cask "opera"
+cask "spotify"
+cask "brave-browser"
+cask "slack"
+cask "keybase"
+cask "Roon"
+cask "Plex"
+
+tap "homebrew/cask-fonts"
+cask "font-hasklig-nerd-font-mono"
+
+cask "cyberduck"
+mas "Jira", id: 1475897096
+cask "docker"
+{{- end }}

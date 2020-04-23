@@ -1,0 +1,10 @@
+# vi: ft=fish
+function cs
+    wal -stne --backend colorz $argv ^ /dev/null
+    bash "$WIDGETS_CONFIG/pecan/wal-set"
+    # Clear the color settings
+    #
+    chezmoi apply ~/.alacritty.yml
+    cat ~/.cache/wal/colors-alacritty.yml >> ~/.alacritty.yml
+    source ~/.cache/wal/colors.fish
+end

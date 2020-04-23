@@ -1,0 +1,29 @@
+enter ~/development/.
+    if test -e pyproject.toml; source (poetry env info -p)/bin/activate.fish; else if test -e Pipfile.lock; source (pipenv --venv)/bin/activate.fish; end;
+
+leave ~/development/.*
+    if set -q VIRTUAL_ENV; deactivate; end;
+
+enter ~/development/pairity/.*
+    set -gx FURY_AUTH "{{ (onepassword "GemFury Personal Full Access Token").details.password }}";
+
+leave ~/development/pairity
+    set -u FURY_AUTH;
+
+enter ~/development/pairity/pairity_score
+    set -gx pairity_score_db_url "postgresql://iantbaldwin:{{ (onepassword "PGPASSWORD").details.password }}@localhost:5432";
+    set -gx PGHOST "localhost";
+    set -gx PGPASSWORD "{{ (onepassword "PGPASSWORD").details.password }}";
+    set -gx NEPTUNE_API_TOKEN "{{ (onepassword "Neptune API Key").details.password }}";
+
+leave ~/development/pairity/pairity_score
+    set -u pairity_score_db_url;
+    set -u PGHOST;
+    set -u PGPASSWORD;
+    set -u NEPTUNE_API_TOKEN;
+
+enter ~/development/pairity/github
+    set -gx GITHUB_TOKEN "{{ (index (index (onepassword "Mrs. Gitty - Github").details.sections 1).fields 1).v }}";
+
+leave ~/development/pairity/github
+    set -u GITHUB_TOKEN;

@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Re-initialize the environment
+# version: 0.0.1
+
+{{- if eq .chezmoi.os "darwin" }}
+bash "${USER_DEVELOPMENT}/dotfiles/mac/init.sh"
+{{- else if eq .chezmoi.os "linux" }}
+bash "${USER_DEVELOPMENT}/dotfiles/ubuntu/19.10/init.sh"
+{{- end }}

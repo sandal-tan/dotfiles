@@ -1,0 +1,93 @@
+# vi: ft=fish
+
+# Install fundle if it's not installed
+if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
+
+# Plugins
+fundle plugin 'edc/bass'
+fundle plugin 'tuvistavie/oh-my-fish-core'
+fundle plugin 'fishpkg/fish-pwd-info'
+fundle plugin 'fishpkg/fish-pwd-is-home'
+fundle plugin 'jorgebucaran/fish-nvm'
+fundle plugin 'fishpkg/fish-git-util'
+fundle plugin 'jorgebucaran/fish-getopts'
+
+fundle init
+
+# Install fundle the first time
+if not test -e ~/.config/fish/fundle; fundle install; end
+ 
+# Load environment variables
+bass source $HOME/.environment
+#bass source $HOME/.environment.secrets
+
+
+
+if status --is-interactive
+    # Make sure that node is setup
+    if not which node > /dev/null; nvm use lts; end
+
+    {{- if eq .chezmoi.os "darwin" }}
+    # If we have `yabai` installed, and it is stopped, start it
+    if brew services list | grep "yabai stopped" > /dev/null
+        brew services start yabai > /dev/null &
+    end
+
+    # If Ubersicht isn't running, start it.
+    set bersicht_path "/Applications/Übersicht.app"
+    if test -e $bersicht_path; and not ps -ef | grep 'bersicht$' > /dev/null
+        open $bersicht_path > /dev/null &
+    end
+
+    if not test -e $HOME/.opsetupdone
+        echo "Don't forget about universal clipboard"
+        op signin team-pairity.1password.com ibaldwin@pairity.ai
+        op signin my.1password.com ianbldwn@gmail.com
+        touch $HOME/.opsetupdone
+    end
+
+    set -gx WIDGETS_CONFIG "$HOME/Library/Application Support/Übersicht/widgets"
+    if not test -e "$WIDGETS_CONFIG/pecan"
+        git clone https://github.com/zzzeyez/pecan.git "$WIDGETS_CONFIG/pecan"
+    end
+
+    if test -e "$WIDGETS_CONFIG/getting-started.coffee"
+        rm -rf "$WIDGETS_CONFIG/getting-started.coffee"
+    end
+
+    if not test -e "$HOME/.bin/pecan-style"
+        ln -s "$WIDGETS_CONFIG/pecan/pecan-style" "$HOME/.bin/pecan-style"
+    end
+
+    if test (cat "$WIDGETS_CONFIG/pecan/.cache") != "maria"
+        pecan-style --load maria > /dev/null &
+    end
+
+    if not npm list -g | grep yarn > /dev/null
+        npm install -g yarn
+    end
+    {{- end }}
+     
+    # Load abberviations
+    source $HOME/.config/fish/abbr.fish
+
+    function fish_greeting
+    {{- if eq .chezmoi.os "darwin" }}
+        cs &
+    {{- end }}
+        archey
+        fortune
+    end
+
+    # This has to be here for some fun reason. Something about fish not being able
+    # to bind to events via a `source`.
+    function activate_ondir --on-variable PWD -d "Run ondir on a change to PWD"
+        if test ! -e "$OLDONDIRWD"; set -g OLDONDIRWD /; end;
+        eval (ondir $OLDONDIRWD $PWD)
+        set -g OLDONDIRWD "$PWD";
+    end
+    pyenv init - | source
+
+end
+
+

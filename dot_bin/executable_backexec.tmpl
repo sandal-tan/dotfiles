@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# vi: ft=bash
+# version: 0.0.1
+#
+# Utility to execute commands on the SSH Client
+
+{{- if eq .chezmoi.os "linux" }}
+ssh -p "${REMOTE_SSH_PORT}" "$(whoami)@localhost" -- "$@"
+{{- else }}
+ansi --red "\`backexec\` is not available on this system"
+exit 1
+{{- end }}

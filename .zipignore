@@ -1,0 +1,7 @@
+# The \* is because we are zipping ../dotfiles
+*.git/*
+*dotfiles.zip
+*.fetchtime
+*.gitignore
+*.zipignore
+*dotfiles-master/
