@@ -11,9 +11,9 @@ leave ~/development/pairity
     set -u FURY_AUTH;
 
 enter ~/development/pairity/pairity_score
-    set -gx pairity_score_db_url "postgresql://iantbaldwin:besucher@localhost:5432";
+    set -gx pairity_score_db_url "postgresql://iantbaldwin:{{ (onepassword "PGPASSWORD").details.password }}@localhost:5432";
     set -gx PGHOST "localhost";
-    set -gx PGPASSWORD "besucher";
+    set -gx PGPASSWORD "{{ (onepassword "PGPASSWORD").details.password }}";
 
 leave ~/development/pairity/pairity_score
     set -u pairity_score_db_url;

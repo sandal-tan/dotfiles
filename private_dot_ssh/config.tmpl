@@ -5,6 +5,10 @@ Host matcha
     Hostname {{ (index (index (onepassword "matcha").details.sections 0).fields 0).v }}
     Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
 
+Host genmaicha
+    Hostname {{ (index (index (onepassword "genmaicha").details.sections 0).fields 0).v }}
+    Port {{ (index (index (onepassword "genmaicha").details.sections 0).fields 3).v }}
+
 Host matcha-proxy
     Hostname {{ (index (index (onepassword "matcha").details.sections 0).fields 0).v }}
     Port {{ (index (index (onepassword "matcha").details.sections 0).fields 3).v }}
