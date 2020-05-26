@@ -11,6 +11,7 @@ if shopt -q login_shell; then
         source ~/.bash_aliases
     fi
 
+    export PATH="/home/iantbaldwin/.pyenv/bin:$PATH"
     # Hand over to fish
     if command -v pyenv 1>/dev/null 2>&1; then
         eval "$(pyenv init -)"
@@ -18,7 +19,9 @@ if shopt -q login_shell; then
     _fish=$(which fish)
     export SHELL=$_fish
 
-    {{- if eq .chezmoi.os "linux" }}
+    {{- if eq .chezmoi.osRelease.id "raspbian" }}
+    exec $_fish
+    {{- else if eq .chezmoi.os "linux" }}
     exec tmux-session
     {{- else }}
     exec $_fish
