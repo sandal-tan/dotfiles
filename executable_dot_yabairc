@@ -38,4 +38,4 @@ done
 
 # Autoupdate yabai from HEAD
 # From: https://github.com/koekeishiya/yabai/wiki/Tips-and-tricks#auto-updating-from-head-via-brew
-YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &
+#YABAI_CERT=yabai-cert sh -c "$(curl -fsSL "https://git.io/update-yabai")" &

@@ -21,6 +21,9 @@ export RIGHT_SYMBOL="\uE0B4"
 export SHELL_PROMPT="\uE0B5"
 
 export EDITOR=nvim
+if [ -e "$HOME/.nimble/bin" ]; then
+    export PATH=$HOME/.nimble/bin:$PATH
+fi
 
 {{- if eq .chezmoi.os "linux" }}
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
