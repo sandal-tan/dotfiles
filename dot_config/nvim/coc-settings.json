@@ -1,5 +1,35 @@
 {
     "python.jediEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.mypyPath": "mypy",
+    "python.linting.pylintPath": "pylint",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.banditPath": "bandit",
+    "python.linting.banditEnabled": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "black",
+    "python.sortImports.path": "isort",
+    "python.linting.pylintUseMinimalCheckers": false,
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.rootPatterns": [
+        "Pipfile",
+        "pyproject.toml",
+        ".git",
+        ".hg",
+        ".projections.json"
+    ],
+    "prettier.proseWrap": "always",
+    "prettier.printWidth": 120,
+    "diagnostic-languageserver.formatters": {
+        "nimpretty": {
+            "command": "nimpretty",
+            "args": ["--indent:2"]
+        }
+    },
+    "diagnostic-languageserver.formatFiletypes": {
+        "nim": "nimpretty"
+    },
     "languageserver": {
         "nim": {
           "command": "nimlsp",
