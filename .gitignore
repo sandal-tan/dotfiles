@@ -2,3 +2,4 @@
 dotfiles.zip
 dotfiles-*/
 .nvimlog
+*.DS_Store

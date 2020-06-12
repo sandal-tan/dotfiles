@@ -13,6 +13,7 @@ export PIPENV_VERBOSITY=-1
 export VIRTUAL_ENV_DISABLE_PROMPT="yes"
 export REMOTE_SSH_PORT=2000
 export WALLPAPER_HOME="$HOME/.config/wallpapers"
+export TERM="screen-256color"
 
 # https://www.nerdfonts.com/#cheat-sheet
 # https://github.com/ryanoasis/powerline-extra-symbols
@@ -23,6 +24,10 @@ export SHELL_PROMPT="\uE0B5"
 export EDITOR=nvim
 if [ -e "$HOME/.nimble/bin" ]; then
     export PATH=$HOME/.nimble/bin:$PATH
+fi
+
+if [ -e "$HOME/.cargo/bin" ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
 fi
 
 {{- if eq .chezmoi.os "linux" }}
@@ -39,9 +44,4 @@ export PATH=$HOME/.bin:$PYENV_ROOT/bin:$PATH
 export NOTES_HOME="${HOME}/Documents/notes/"
 export AWS_VAULT_KEYCHAIN_NAME="login"
 export PATH=$HOME/.bin:$PYENV_ROOT/bin:/usr/local/bin:$PATH
-{{- end }}
-
-{{- if eq .chezmoi.osRelease.id "raspbian" }}
-export PATH=/snap/bin/:$PATH
-export PATH=$HOME/development/nim/bin:$PATH
 {{- end }}
