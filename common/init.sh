@@ -82,6 +82,10 @@ install_from_remote_binary git.io/ansi ansi
 # revolver for progress spinners
 install_from_git https://github.com/molovo/revolver revolver/revolver
 
+if [ ! -e "${HOME}/development/isomorphic-copy" ]; then
+    git clone https://github.com/ms-jpq/isomorphic-copy "${HOME}/development/isomorphic-copy"
+fi
+
 # setup python environment
 output "Setting up python environment" --header
 if [ ! -e "${HOME}/.pyenv/versions/${PYTHON_VERSION}" ]; then

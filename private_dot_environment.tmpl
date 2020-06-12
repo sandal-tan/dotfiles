@@ -34,6 +34,10 @@ if [ -e "$HOME/go/bin" ]; then
     export PATH=$HOME/go/bin:$PATH
 fi
 
+if [ -e "$HOME/development/isomorphic-copy/bin" ]; then
+    export PATH=$HOME/development/isomorphic-copy/bin:$PATH
+fi
+
 {{- if eq .chezmoi.os "linux" }}
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
