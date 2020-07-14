@@ -71,20 +71,20 @@ set shiftwidth=4
 
 " ======================================== Clipboard =========================================
 set clipboard^=unnamed,unnamedplus
-{{- if eq .chezmoi.os "linux" }}
-let g:clipboard = {
-    \   'name': 'remote',
-    \   'copy': {
-    \       '+': 'remote_copy',
-    \       '*': 'remote_copy'
-    \   },
-    \   'paste': {
-    \       '+': 'backexec pbpaste',
-    \       '*': 'backexec pbpaste'
-    \   },
-    \   'cache_enabled': 0
-    \}
-{{- end }}
+"{{- if eq .chezmoi.os "linux" }}
+"let g:clipboard = {
+    "\   'name': 'remote',
+    "\   'copy': {
+    "\       '+': 'remote_copy',
+    "\       '*': 'remote_copy'
+    "\   },
+    "\   'paste': {
+    "\       '+': 'backexec pbpaste',
+    "\       '*': 'backexec pbpaste'
+    "\   },
+    "\   'cache_enabled': 0
+    "\}
+"{{- end }}
 
 nnoremap d "_d
 vnoremap d "_d
