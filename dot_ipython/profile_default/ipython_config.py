@@ -89,4 +89,4 @@ class CustomPrompt(Prompts):
         return []
 
 c.TerminalInteractiveShell.prompts_class = CustomPrompt
-c.TerminalInteractiveShell.highlighting_style = 'paraiso-dark'
+c.TerminalInteractiveShell.highlighting_style = 'wal'
