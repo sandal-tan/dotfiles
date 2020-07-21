@@ -24,12 +24,24 @@ end
 bass source $HOME/.environment
 #bass source $HOME/.environment.secrets
 
+set -gx PECAN_STYLE 'maria'
+
 
 
 if status --is-interactive
     if not set -q SKIPINIT
         # Make sure that node is setup
         if not which node > /dev/null; nvm use lts; end
+
+        if not test -e "$HOME/development/glyph"
+            git clone https://github.com/sandal-tan/glyph $HOME/development/glyph
+            pip install $HOME/development/glyph
+            export_status
+        end
+
+        function fish_prompt
+            glyph
+        end
 
         {{- if eq .chezmoi.os "darwin" }}
         # If we have `yabai` installed, and it is stopped, start it
@@ -55,6 +67,10 @@ if status --is-interactive
             git clone https://github.com/zzzeyez/pecan.git "$WIDGETS_CONFIG/pecan"
         end
 
+        if not test -e "$WIDGETS_CONFIG/xanthia"
+            git clone https://github.com/zzzeyez/xanthia.git "$WIDGETS_CONFIG/xanthia"
+        end
+
         if test -e "$WIDGETS_CONFIG/getting-started.coffee"
             rm -rf "$WIDGETS_CONFIG/getting-started.coffee"
         end
@@ -63,8 +79,12 @@ if status --is-interactive
             ln -s "$WIDGETS_CONFIG/pecan/pecan-style" "$HOME/.bin/pecan-style"
         end
 
-        if test (cat "$WIDGETS_CONFIG/pecan/.cache") != "maria"
-            pecan-style --load maria > /dev/null &
+        if not test -e "$HOME/.bin/notify-send"
+            ln -s "$WIDGETS_CONFIG/xanthia/notify-send" "$HOME/.bin/notify-send"
+        end
+
+        if test (cat "$WIDGETS_CONFIG/pecan/.cache") != "$PECAN_STYLE"
+            pecan-style --load $PECAN_STYLE > /dev/null &
         end
 
         if not npm list -g | grep yarn > /dev/null
