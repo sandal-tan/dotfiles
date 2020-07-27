@@ -1,0 +1,10 @@
+# Send window to iPad
+ctrl + alt - p : yabai -m window --display 1; yabai -m display --focus 1
+ctrl + alt - n : yabai -m window --display 2; yabai -m display --focus 2
+
+# Quickly open applications
+ctrl + alt - t : /Applications/Alacritty.app/Contents/MacOS/alacritty &
+ctrl + alt - b : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser --new-tab 
+
+# Restart yabai
+ctrl + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"

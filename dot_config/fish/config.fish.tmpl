@@ -9,7 +9,6 @@ fundle plugin 'edc/bass'
 fundle plugin 'tuvistavie/oh-my-fish-core'
 fundle plugin 'fishpkg/fish-pwd-info'
 fundle plugin 'fishpkg/fish-pwd-is-home'
-fundle plugin 'jorgebucaran/fish-nvm'
 fundle plugin 'fishpkg/fish-git-util'
 fundle plugin 'jorgebucaran/fish-getopts'
 
@@ -30,14 +29,24 @@ set -gx PECAN_STYLE 'maria'
 
 if status --is-interactive
     if not set -q SKIPINIT
+
+        if functions -q load_nvm > /dev/null
+            load_nvm
+        end
+
+        if not functions -q nvm > /dev/null;
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+            load_nvm
+        end
+
         # Make sure that node is setup
-        if not which node > /dev/null; nvm use lts; end
+         if not which node > /dev/null; nvm use lts; end
 
         if not test -e "$HOME/development/glyph"
             git clone https://github.com/sandal-tan/glyph $HOME/development/glyph
             pip install $HOME/development/glyph
-            export_status
         end
+        export_status
 
         function fish_prompt
             glyph

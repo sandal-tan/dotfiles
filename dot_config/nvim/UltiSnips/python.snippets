@@ -1,0 +1,26 @@
+global !p
+
+def guess_type(arg_doc):
+    if 'string' in arg_doc.lower():
+        return 'str'
+    return ''
+
+def code_from_doc(t):
+    attributes = {}
+    if t:
+        attributes  = {line.split()[0].replace(':', ''):' '.join(line.split()[1:]) for line in t.split('\n')}
+    return '\n'.join(f'{k}: {guess_type(v)}' for k, v in attributes.items())
+endglobal
+
+snippet dataclass "Create a python dataclass" b
+@dataclass
+class ${1:ClassName}:
+	"""$2
+
+	Attributes:
+		$3
+
+	"""
+
+	`!p snip.rv=code_from_doc(t[3])`
+endsnippet
