@@ -1,6 +1,6 @@
 items:
-  ExitCodeItem: ~
+  ExitCodeItem: {}
   DirItem:
     compact: false
-  VenvItem: ~
-  GitItem: ~
+  VenvItem: {}
+  GitItem: {}
