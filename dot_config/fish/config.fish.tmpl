@@ -34,7 +34,7 @@ if status --is-interactive
         if not which node > /dev/null; nvm use lts; end
 
         if not test -e "$HOME/development/glyph"
-            git clone https://github.com/sandal-tan/glyph $HOME/development/glyph
+            git clone git@github.com:sandal-tan/glyph.git $HOME/development/glyph
             pip install $HOME/development/glyph
             export_status
         end
