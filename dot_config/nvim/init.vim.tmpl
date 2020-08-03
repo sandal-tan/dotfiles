@@ -40,6 +40,7 @@ Plug 'sbdchd/neoformat'
 Plug 'voldikss/vim-floaterm'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/goyo.vim'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -247,3 +248,7 @@ autocmd VimResized * wincmd =
 
 " 122 = 120  + gutter
 let g:goyo_width=122
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-l>"
