@@ -19,8 +19,10 @@ if shopt -q login_shell; then
     _fish=$(which fish)
     export SHELL=$_fish
 
-    {{- if eq .chezmoi.osRelease.id "raspbian" }}
+    {{- if (index .chezmoi "osRelease") }}
+        {{- if eq .chezmoi.osRelease.id "raspbian" }}
     exec $_fish
+        {{- end }}
     {{- else if eq .chezmoi.os "linux" }}
     exec tmux-session
     {{- else }}

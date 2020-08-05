@@ -89,4 +89,8 @@ class CustomPrompt(Prompts):
         return []
 
 c.TerminalInteractiveShell.prompts_class = CustomPrompt
-c.TerminalInteractiveShell.highlighting_style = 'wal'
+try:
+    from pygments.styles import wal
+    c.TerminalInteractiveShell.highlighting_style = 'wal'
+except Exception:
+    pass
