@@ -1,0 +1,18 @@
+session_name: ide
+environment:
+  SKIPINIT: 'yes'
+starting_directory: ./
+windows:
+- window_name: editor
+  layout: tiled
+  shell_command_before:
+    - source (poetry env info -p)/bin/activate.fish
+    - clear
+  panes:
+    - ipython
+    - pane
+    - focus: true
+      shell_command:
+        - tmux resize-pane -y 80
+        - clear
+        - nvim .

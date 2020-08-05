@@ -1,0 +1,9 @@
+session_name: matcha
+starting_director: ~
+windows:
+  - window_name: ssh
+    panes:
+    - ssh matcha
+  - window_name: clipboard
+    panes:
+      - cssh matcha
