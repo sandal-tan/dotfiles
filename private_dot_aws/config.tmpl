@@ -19,3 +19,21 @@ role_arn       = arn:aws:iam::808057624432:role/account-admin-role
 region         = us-east-1
 mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
 source_profile = pairity-org
+
+[profile pairity-shared-admin]
+role_arn       = arn:aws:iam::713186138904:role/account-admin-role
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org
+
+[profile pairity-ds]
+role_arn       = arn:aws:iam::808057624432:role/data-science-role
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org
+
+[profile pairity-prod-admin]
+role_arn       = arn:aws:iam::368475217771:role/account-admin-role
+region         = us-east-1
+mfa_serial     = arn:aws:iam::108466283686:mfa/ibaldwin
+source_profile = pairity-org

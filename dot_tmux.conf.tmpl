@@ -12,6 +12,8 @@ set-window-option -g mode-keys vi
 set-option -g status-position top
 {{- end }}
 
+bind -T copy-mode-vi y send -X copy-pipe "c"
+
 # Status
 set -g status-style 'bg=colour0, fg=colour2'
 

@@ -41,6 +41,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/goyo.vim'
 Plug 'SirVer/ultisnips'
+Plug 'vim-test/vim-test'
 
 call plug#end()
 
@@ -73,21 +74,15 @@ set softtabstop=4
 set shiftwidth=4
 
 " ======================================== Clipboard =========================================
-set clipboard^=unnamed,unnamedplus
-"{{- if eq .chezmoi.os "linux" }}
-"let g:clipboard = {
-    "\   'name': 'remote',
-    "\   'copy': {
-    "\       '+': 'remote_copy',
-    "\       '*': 'remote_copy'
-    "\   },
-    "\   'paste': {
-    "\       '+': 'backexec pbpaste',
-    "\       '*': 'backexec pbpaste'
-    "\   },
-    "\   'cache_enabled': 0
-    "\}
-"{{- end }}
+if has('nvim')
+  " use unnamedplus only! or else will double set
+  set clipboard=unnamedplus
+  if getenv('DISPLAY') == v:null
+    exe setenv('DISPLAY', 'FAKE')
+  endif
+else
+  autocmd TextYankPost * call system("c", getreg('"'))
+endif
 
 nnoremap d "_d
 vnoremap d "_d
@@ -252,3 +247,5 @@ let g:goyo_width=122
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-l>"
+
+let test#strategy = "floaterm"
